@@ -20,18 +20,12 @@ public class MapperTest {
 	
 	@Test
 	public void testGetGame() {
-//		System.out.println(gameMapper.getOneGame().getGameId());
-//		System.out.println(gameMapper.getOneGame().getTitle());
-//		System.out.println(gameMapper.getOneGame().getDeveloper());
-//		System.out.println(gameMapper.getOneGame().getDeveloperCountry());
-//		System.out.println(gameMapper.getOneGame().getPublisher());
-//		System.out.println(gameMapper.getOneGame().getPublisherCountry());
-//		System.out.println(gameMapper.getOneGame().getSeriesName());
-//		System.out.println(gameMapper.getOneGame().getSeriesNumber());
-//		System.out.println(gameMapper.getOneGame().getGenre());
-//		System.out.println(gameMapper.getOneGame().getPriceToString());
-//		System.out.println(gameMapper.getOneGame().getReleaseDate());
-//		System.out.println(gameMapper.getOneGame().getDescription());
-		System.out.println(gameMapper.getOneGame());
+		System.out.println("타이틀 : " + gameMapper.getOneGame().getTitle());
+		System.out.println("개발사 : " + gameMapper.getOneGame().getDeveloper());
+		System.out.println("배급사 : " + gameMapper.getOneGame().getPublisher());
+		System.out.println("가격 : " + gameMapper.getOneGame().getPrice());
+		System.out.println("가격 : " + gameMapper.getOneGame().getPriceToString());
+		System.out.println("설명 : " + gameMapper.getOneGame().getDescription());
+		
 	}
 }

@@ -3,8 +3,12 @@
 				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gamesLibrary.mapper.GameMapper">
 
-	<select id="getOneById" resultType="String">
-		select title from gamelist where gameid=1
+	<select id="getAll" resultType="com.gamesLibrary.domain.Game">
+		select * from gamelist
+	</select>
+
+	<select id="getOneById" resultType="com.gamesLibrary.domain.Game">
+		select * from gamelist where gameid=1
 	</select>
 
 </mapper>
