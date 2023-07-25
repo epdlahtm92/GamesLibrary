@@ -10,8 +10,8 @@
 </head>
 <body>	
 	<div class="jumbotron" style="height:200px; background-color:black; padding:45px; display:flex; margin-bottom:0px; border-radios:0px;">
-		<div class="container" style="width:350px; margin-left:0px;">
-			<span><a href="${ pageContext.request.contextPath }/all"><img height="100px" src="${ pageContext.request.contextPath }/resources/img/jumbotronBackgroundImg.gif"></a></span><span style="display:inline-block; height:85px; font-size:2.5em; color:white; font-weight:bold; margin-top:25px; text-align:center; vertical-align: middle;">GAME LIBRARY</span>
+		<div class="container" style="width:350px; margin-left:0px; width:450px;">
+			<span><a href="${ pageContext.request.contextPath }/all"><img height="100px" src="${ pageContext.request.contextPath }/resources/img/jumbotronBackgroundImg.gif"></a></span><span style="display:inline-block; height:85px; font-size:2.5em; color:white; font-weight:bold; margin-top:25px; text-align:center; vertical-align:middle;">GAME LIBRARY</span>
 		</div>
 		<form class="form-inline" >
 			  <div class="form-group mx-sm-3 mb-2">

@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -78,15 +79,19 @@ public class GameController {
 	
 	@PostMapping("/admin/add")
 	public String submitAddNewGame(@ModelAttribute("newGame") Game game, HttpServletRequest requset, HttpSession session) {
-		String imageFileName = game.getGameId() + "_" + game.getTitle() + "_" + game.getImageFile().getOriginalFilename();
+		String uuid = UUID.randomUUID().toString().replaceAll(" ", "");
+		String title = game.getTitle().replaceAll(" ", "");
+		String originalFilename = game.getImageFile().getOriginalFilename().replaceAll(" ","");
+		String imageFileName = uuid + "_" +title + "_" + originalFilename;
 		
+		game.setImgPath(imageFileName);;
 		try {
 			game.getImageFile().transferTo(new File("C:\\03StringWorkspace\\GamesLibrary\\src\\main\\webapp\\resources\\imageFiles\\" + imageFileName));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		gameService.setNewGame(game , imageFileName);
+		gameService.setNewGame(game);
 		return "redirect:/all";
 	}
 	

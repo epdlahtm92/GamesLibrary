@@ -28,18 +28,6 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2 control-label">장르</label>
-				<div class="col -sm-3">
-					<form:input path="genre" class="form-control" />
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2 control-label">가격</label>
-				<div class="col -sm-3">
-					<form:input path="price" class="form-control" />
-				</div>
-			</div>
-			<div class="form-group row">
 				<label class="col-sm-2 control-label">개발사</label>
 				<div class="col -sm-3">
 					<form:input path="developer" class="form-control" />
@@ -61,6 +49,30 @@
 				<label class="col-sm-2 control-label">배급사 국가</label>
 				<div class="col -sm-3">
 					<form:input path="publisherCountry" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 control-label">시리즈 이름</label>
+				<div class="col -sm-3">
+					<form:input path="seriesName" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 control-label">시리즈 넘버</label>
+				<div class="col -sm-3">
+					<form:input path="seriesNumber" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 control-label">장르</label>
+				<div class="col -sm-3">
+					<form:input path="genre" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 control-label">가격</label>
+				<div class="col -sm-3">
+					<form:input path="price" class="form-control" />
 				</div>
 			</div>
 			<div class="form-group row">

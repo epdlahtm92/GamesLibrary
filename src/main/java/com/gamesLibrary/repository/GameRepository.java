@@ -21,7 +21,7 @@ public interface GameRepository {
 		
 		Set<Game> getGameListByFilter(Map<String, List<String>> filter);
 		
-		void setNewGame(Game game, String imageFileName);
+		void setNewGame(Game game);
 	
 	//Update
 	

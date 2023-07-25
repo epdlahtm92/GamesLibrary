@@ -50,9 +50,9 @@ public class GameServiceImpl implements GameService {
 	}
 
 	@Override
-	public void setNewGame(Game game, String imageFileName) {
+	public void setNewGame(Game game) {
 		// TODO Auto-generated method stub
-		gameRepository.setNewGame(game, imageFileName);
+		gameRepository.setNewGame(game);
 	}
 
 }

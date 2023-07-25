@@ -211,10 +211,9 @@ public class GameRepositoryImpl implements GameRepository {
 	}
 
 	@Override
-	public void setNewGame(Game game, String imageFileName) {
+	public void setNewGame(Game game) {
 		// TODO Auto-generated method stub
-		game.setImgPath(imageFileName);
-		listOfGames.add(game);
+		gameMapper.insertOneGame(game);
 	}
 
 }
