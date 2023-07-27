@@ -2,16 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gamesLibrary.mapper.GameMapper">
 
-	<select id="getAll" resultType="com.gamesLibrary.domain.Game">
-		select * from gamelist
-	</select>
 
-	<select id="getOneById" resultType="com.gamesLibrary.domain.Game">
-		select * from gamelist where gameid=1
-	</select>
-
-	<insert id="insertOne" parameterType="com.gamesLibrary.domain.Game" >
-		insert into gamelist (gameid, title, developer, developercountry, publisher, publishercountry, seriesname, seriesnumber, genre, imgpath, price, releasedate, description) values (#{ Game.gameId }, #{ Game.title }, #{ Game.developer }, #{ Game.developerCountry }, #{ Game.publisher }, #{ Game.publisherCountry }, #{ Game.seriesName }, #{ Game.seriesNumber }, #{ Game.genre }, #{ Game.imgPath }, #{ Game.price }, #{ Game.releaseDate }, #{ Game.description })
-	</insert>
+	<!--  create  -->
+		<!-- game -->
+		<insert id="insertOne" parameterType="com.gamesLibrary.domain.Game" >
+			insert into gamelist (gameid, title, developer, developercountry, publisher, publishercountry, seriesname, seriesnumber, genre, imgpath, price, releasedate, description) values (#{ Game.gameId }, #{ Game.title }, #{ Game.developer }, #{ Game.developerCountry }, #{ Game.publisher }, #{ Game.publisherCountry }, #{ Game.seriesName }, #{ Game.seriesNumber }, #{ Game.genre }, #{ Game.imgPath }, #{ Game.price }, #{ Game.releaseDate }, #{ Game.description })
+		</insert>
+		
+		<!-- board -->
+		<insert id="insertOnePost" parameterType="com.gamesLibrary.domain.Board">
+			insert into board (rootid, postid, title, content, username) values (${Board.rootId}, ${Board.postId}, #{Board.title}, #{Board.content}, #{Board.userName})
+		</insert>
+	
+	<!-- read  -->
+		<!-- game  -->
+		<select id="getAll" resultType="com.gamesLibrary.domain.Game">
+			select * from gamelist order by gameid
+		</select>
+	
+		<select id="getOneById" resultType="com.gamesLibrary.domain.Game">
+			select * from gamelist where gameid=1
+		</select>
+	
+		<select id="searchTitle" parameterType="String" resultType="com.gamesLibrary.domain.Game">
+			select * from gamelist where lower(title) like '%${ gameTitle }%'
+		</select>
+		
+		<!-- board -->
+		<select id="getAllPost" resultType="com.gamesLibrary.domain.Board">
+			select * from board order by postid
+		</select>
+	
+	<!-- update -->
+	
+	<!-- delete -->
+	<delete id="deleteOne" parameterType="Integer" >
+		delete from gamelist where gameid = ${ gameid }
+	</delete> 
 	
 </mapper>

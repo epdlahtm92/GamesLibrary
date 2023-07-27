@@ -33,13 +33,12 @@
 					<p><a style="color:black; text-decoration:none" href=./game?id=${ game.gameId }>
 						<img width=460 height=230 src=${ pageContext.request.contextPath }/resources/imageFiles/${ game.imgPath } />
 					   </a></p>
-					   	<p> ${ game.imgPath }
 						<br> 시리즈 : ${ game.seriesName } 시리즈  ${ game.seriesNumber } 번 째 작품
 						<br> 개발사 : ${ game.developer } | 국가 : ${ game.developerCountry } 
 						<br> 배급사 : ${ game.publisher } | 국가 : ${ game.publisherCountry } 
 						<br> 장르 : ${ game.genre } | 발매일 : ${ game.releaseDate }
 					<p align=left>${fn:substring(game.description, 0, 60)}...
-					<p> ${ game.priceToString } 원
+					<p> ${ game.priceToString }
 				</div>
 			</c:forEach>
 		</div>

@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gamesLibrary.domain.Board;
 import com.gamesLibrary.domain.Game;
 import com.gamesLibrary.repository.GameRepository;
 
@@ -53,6 +54,26 @@ public class GameServiceImpl implements GameService {
 	public void setNewGame(Game game) {
 		// TODO Auto-generated method stub
 		gameRepository.setNewGame(game);
+	}
+
+	@Override
+	public void deleteOneGame(int gameid) {
+		// TODO Auto-generated method stub
+		gameRepository.deleteOneGame(gameid);
+		
+	}
+
+	@Override
+	public List<Board> getAllBoardList() {
+		// TODO Auto-generated method stub
+		return gameRepository.getAllBoardList();
+	}
+
+	@Override
+	public void setNewPost(Board board) {
+		// TODO Auto-generated method stub
+		gameRepository.setNewPost(board);
+		
 	}
 
 }

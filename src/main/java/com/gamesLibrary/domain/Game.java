@@ -35,8 +35,6 @@ public class Game {
 		this.publisher = publisher;
 		this.seriesName = seriesName;
 		this.price = price;
-		DecimalFormat df = new DecimalFormat("###,###");
-		this.priceToString = df.format(price);
 	}
 
 	public int getGameId() {
@@ -125,7 +123,7 @@ public class Game {
 	}
 
 	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
+		this.releaseDate = releaseDate.substring(0, 10);
 	}
 
 	public String getDescription() {
@@ -144,8 +142,13 @@ public class Game {
 
 	public void setPrice(int price) {
 		this.price = price;
+		if (price == 0) {
+			this.priceToString = "무료";
+		} else {
+			DecimalFormat df = new DecimalFormat("###,###");
+			this.priceToString = df.format(price) + " 원";
+		}
 	}
-
 
 	public String getPriceToString() {
 		return priceToString;

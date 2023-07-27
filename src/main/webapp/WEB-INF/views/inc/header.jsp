@@ -7,11 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
+<link rel="faivicon" href="${ pageContext.request.contextPath }/resources/imagFiles/icon/favicon.ico">
 </head>
 <body>	
 	<div class="jumbotron" style="height:200px; background-color:black; padding:45px; display:flex; margin-bottom:0px; border-radios:0px;">
 		<div class="container" style="width:350px; margin-left:0px; width:450px;">
-			<span><a href="${ pageContext.request.contextPath }/all"><img height="100px" src="${ pageContext.request.contextPath }/resources/img/jumbotronBackgroundImg.gif"></a></span><span style="display:inline-block; height:85px; font-size:2.5em; color:white; font-weight:bold; margin-top:25px; text-align:center; vertical-align:middle;">GAME LIBRARY</span>
+			<span><a href="${ pageContext.request.contextPath }/all"><img height="100px" src="${ pageContext.request.contextPath }/resources/img/jumbotronBackgroundImg.gif"></a></span><span style="display:inline-block; height:85px; font-size:2.5em; color:white; font-weight:bold; margin-top:25px; text-align:center; vertical-align:middle;"><a style="color:white; text-decoration:none " href="${ pageContext.request.contextPath }/all">GAME LIBRARY</a></span>
 		</div>
 		<form class="form-inline" >
 			  <div class="form-group mx-sm-3 mb-2">
@@ -21,12 +22,12 @@
 		</form>
 	</div>
 	
-	<nav class="navbar navbar-expand navbar-dark bg-dark" style="margin-bottom:20px; display:flex;">
+	<nav class="navbar navbar-expand navbar-dark bg-dark" style="margin-bottom:50px; display:flex;">
 		<div class="container" style="margin-left:10px;">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="${ pageContext.request.contextPath }/home"><img height="35px" src="${ pageContext.request.contextPath }/resources/img/icon/iconHome.png"></a> 
+				<a class="navbar-brand" href="${ pageContext.request.contextPath }/home"><img height="35px" src="${ pageContext.request.contextPath }/resources/imageFiles/icon/iconHome.png"></a> 
 				<a class="navbar-brand" href="${ pageContext.request.contextPath }/all">게임 목록</a> 
-				<a class="navbar-brand" href="${ pageContext.request.contextPath }/home">쇼핑몰</a>
+				<a class="navbar-brand" href="${ pageContext.request.contextPath }/boardList">게시판</a>
 				<a class="navbar-brand" href="${ pageContext.request.contextPath }/admin/add">신규 등록</a>
 			</div>
 			<div class="container" style="width:500px; height:45px; margin-right:10px; align:right;">

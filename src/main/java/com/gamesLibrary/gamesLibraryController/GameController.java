@@ -26,17 +26,17 @@ import com.gamesLibrary.service.GameService;
 public class GameController {
 	@Autowired
 	private GameService gameService;
-	
+
 	@GetMapping("/home")
 	public String requestGameHome(Model model) {
 		return "home";
 	}
-	
+
 	@GetMapping("/all")
 	public String requestGameList(Model model) {
 		List<Game> gameList = gameService.getAllGameList();
 		model.addAttribute("gameList", gameList);
-		
+
 		return "games";
 	}
 	
@@ -44,54 +44,60 @@ public class GameController {
 	public String requestByGameId(@RequestParam("id") String gameId, Model model) {
 		Game game = gameService.getGameId(gameId);
 		model.addAttribute("game", game);
-		
+
 		return "game";
 	}
-	
+
 	@GetMapping("/title/{title}")
 	public String requestGamesByTitle(@PathVariable("title") String gameTitle, Model model) {
-		List<Game> gamesByTitle = gameService.getGameListByGenre(gameTitle);
+		List<Game> gamesByTitle = gameService.getGameListByTitle(gameTitle);
 		model.addAttribute("gameList", gamesByTitle);
-		
+
 		return "games";
 	}
-	
+
 	@GetMapping("/genre/{genre}")
 	public String requestGamesByGenre(@PathVariable("genre") String gameGenre, Model model) {
 		List<Game> gamesByGenre = gameService.getGameListByGenre(gameGenre);
 		model.addAttribute("gameList", gamesByGenre);
-		
+
 		return "games";
 	}
-	
+
 	@GetMapping("/filter/{gameFilter}")
 	public String requestGameByFilter(@MatrixVariable(pathVar="gameFilter") Map<String, List<String>> filter, Model model) {
 		Set<Game> gamesByFilter = gameService.getGameListByFilter(filter);
 		model.addAttribute("gameList", gamesByFilter);
-		
+
 		return "games";
 	}
-	
+
 	@GetMapping("/admin/add")
 	public String requestAddGameForm(@ModelAttribute("newGame") Game game) {
 		return "addGame";
 	}
-	
+
 	@PostMapping("/admin/add")
 	public String submitAddNewGame(@ModelAttribute("newGame") Game game, HttpServletRequest requset, HttpSession session) {
 		String uuid = UUID.randomUUID().toString().replaceAll(" ", "");
 		String title = game.getTitle().replaceAll(" ", "");
 		String originalFilename = game.getImageFile().getOriginalFilename().replaceAll(" ","");
 		String imageFileName = uuid + "_" +title + "_" + originalFilename;
-		
+
 		game.setImgPath(imageFileName);;
 		try {
 			game.getImageFile().transferTo(new File("C:\\03StringWorkspace\\GamesLibrary\\src\\main\\webapp\\resources\\imageFiles\\" + imageFileName));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		gameService.setNewGame(game);
+		return "redirect:/all";
+	}
+
+	@GetMapping("/admin/delete")
+	public String requestDeleteGame(@RequestParam("id") String gameId) {
+		gameService.deleteOneGame(Integer.parseInt(gameId));
 		return "redirect:/all";
 	}
 	
@@ -99,11 +105,11 @@ public class GameController {
 	public void addAttribute(Model model) {
 		model.addAttribute("addTitle", "신규 게임 등록");
 	}
-	
-//	@InitBinder
-//	public void initBinder(WebDataBinder webDataBinder) {
-//		webDataBinder.setAllowedFields();
-//		webDataBinder.setDisallowedFields();
-//	}
-	
+
+	//	@InitBinder
+	//	public void initBinder(WebDataBinder webDataBinder) {
+	//		webDataBinder.setAllowedFields();
+	//		webDataBinder.setDisallowedFields();
+	//	}
+
 }
