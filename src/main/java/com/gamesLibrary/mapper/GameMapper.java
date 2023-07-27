@@ -36,9 +36,16 @@ public interface GameMapper {
 		@Select("select * from board order by postid")
 		public List<Board> getAllPosts();
 		
+		
 	//update
+		//game
+		
+		//board
 	
 	//delete
-	@Delete("delete from gamelist where gameid = ${ gameid }")
-	public void deleteOneGame(@Param("gameid") int gameid);
+		//game
+		@Delete("delete from gamelist where gameid = ${ gameid }")
+		public void deleteOneGame(@Param("gameid") int gameid);
+		
+		//board
 }

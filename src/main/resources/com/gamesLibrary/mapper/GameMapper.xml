@@ -34,7 +34,10 @@
 		</select>
 	
 	<!-- update -->
-	
+		<!-- game -->
+		<update id="updateOne" parameterType="com.gamesLIbrary.domain.Game">
+			update gamelist set title= #{ Game.title }, developer = #{ Game.developer }, developercountry = #{ Game.developercountry }, publisher = #{ Game.publisher }, publishercountry= #{ Game.publisherCountry }, seriesname = #{ Game.seriesName }, seriesnumber = #{ Game.seriesNumber }, genre = #{ Game.genre }, imgpath = #{ Game.imgPath }, price = #{ Game.price }, releasedate = #{ Game.releaseDate }, description = #{ Game.description } where gameid= ${ Game.gameid }
+		</update>
 	<!-- delete -->
 	<delete id="deleteOne" parameterType="Integer" >
 		delete from gamelist where gameid = ${ gameid }
