@@ -6,7 +6,7 @@
 	<!--  create  -->
 		<!-- game -->
 		<insert id="insertOne" parameterType="com.gamesLibrary.domain.Game" >
-			insert into gamelist (gameid, title, developer, developercountry, publisher, publishercountry, seriesname, seriesnumber, genre, imgpath, price, releasedate, description) values (#{ Game.gameId }, #{ Game.title }, #{ Game.developer }, #{ Game.developerCountry }, #{ Game.publisher }, #{ Game.publisherCountry }, #{ Game.seriesName }, #{ Game.seriesNumber }, #{ Game.genre }, #{ Game.imgPath }, #{ Game.price }, #{ Game.releaseDate }, #{ Game.description })
+			insert into gamelist (gameid, title, developer, developercountry, publisher, publishercountry, seriesname, seriesnumber, genre, imgpath, price, releasedate, description) values (gamelist_seq.NEXTVAL, #{ Game.title }, #{ Game.developer }, #{ Game.developerCountry }, #{ Game.publisher }, #{ Game.publisherCountry }, #{ Game.seriesName }, #{ Game.seriesNumber }, #{ Game.genre }, #{ Game.imgPath }, #{ Game.price }, #{ Game.releaseDate }, #{ Game.description })
 		</insert>
 		
 		<!-- board -->
@@ -35,9 +35,9 @@
 	
 	<!-- update -->
 		<!-- game -->
-		<update id="updateOne" parameterType="com.gamesLIbrary.domain.Game">
+		<!-- <update id="updateOne" parameterType="com.gamesLIbrary.domain.Game">
 			update gamelist set title= #{ Game.title }, developer = #{ Game.developer }, developercountry = #{ Game.developercountry }, publisher = #{ Game.publisher }, publishercountry= #{ Game.publisherCountry }, seriesname = #{ Game.seriesName }, seriesnumber = #{ Game.seriesNumber }, genre = #{ Game.genre }, imgpath = #{ Game.imgPath }, price = #{ Game.price }, releasedate = #{ Game.releaseDate }, description = #{ Game.description } where gameid= ${ Game.gameid }
-		</update>
+		</update> -->
 	<!-- delete -->
 	<delete id="deleteOne" parameterType="Integer" >
 		delete from gamelist where gameid = ${ gameid }

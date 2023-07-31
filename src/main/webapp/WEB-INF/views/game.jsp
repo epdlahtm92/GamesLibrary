@@ -18,7 +18,6 @@
 			<div class="row">
 				<div class="col -md-4">
 					<h3>${ game.title }</h3>
-					<p>${ game.description }
 					<p><b>게임 코드 : </b><span class="badge badge-info">${ game.gameId }</span>
 					<p><b>개 발 사 : </b>${ game.developer } | ${ game.developerCountry }
 					<p><b>배 급 사 : </b>${ game.publisher } | ${ game.publisherCountry }
@@ -32,6 +31,7 @@
 						 <sec:authorize access="hasAuthority('ROLE_ADMIN')" var="isAdmin" ></sec:authorize>
 						 	<c:choose>
 						 		<c:when test="${ isAdmin }">
+						 			<a href="<c:url value="./admin/update?id=${ game.gameId }"/>"class="btn btn-warning">수정하기 &raquo;</a>
 						 			<a href="<c:url value="./admin/delete?id=${ game.gameId }"/>"class="btn btn-danger">삭제하기 &raquo;</a>
 						 		</c:when>
 						 	</c:choose>

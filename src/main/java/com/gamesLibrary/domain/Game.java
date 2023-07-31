@@ -21,6 +21,7 @@ public class Game {
 	private String priceToString;
 	private String releaseDate;
 	private String description;
+	private String[] platform;
 	
 	public Game() {
 		super();
@@ -150,23 +151,31 @@ public class Game {
 		}
 	}
 
+	
 	public String getPriceToString() {
 		return priceToString;
 	}
-
-
 	public void setPriceToString(String priceToString) {
 		this.priceToString = priceToString;
 	}
 
 
+	
 	public MultipartFile getImageFile() {
 		return imageFile;
 	}
-
-
 	public void setImageFile(MultipartFile imageFile) {
 		this.imageFile = imageFile;
 	}
+	
+	
+	public String[] getPlatform() {
+		return platform;
+	}
+	public void setPlatform(String[] platform) {
+		this.platform = platform;
+	}
+
+
 
 }

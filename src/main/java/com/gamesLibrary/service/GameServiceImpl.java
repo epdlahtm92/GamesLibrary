@@ -76,4 +76,10 @@ public class GameServiceImpl implements GameService {
 		
 	}
 
+	@Override
+	public void updateOneGame(Game game) {
+		// TODO Auto-generated method stub
+		gameRepository.updateOneGame(game);
+	}
+
 }

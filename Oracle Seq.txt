@@ -1,0 +1,16 @@
+CREATE 유저이름.시퀀스이름
+	INCREMENT BY 증가값 
+	START WITH 시작값 
+	MINVALUE 최솟값 
+	MAXVALUE 최댓값 
+	NOCYCLE 순환여부(최댓값 도달시) 
+	NOCACHE 캐시사용여부
+	NOORDER 순서 여부;
+
+INCREMENT BY : 시퀀스 실행 시 증가시킬 값
+START WITH : 시퀀스의 시작값이다. (MINVALUE과 같거나 커야 한다)
+MINVALUE : 시퀀스가 시작되는 최솟값이다.
+MAXVALUE : 시퀀스가 끝나는 최댓값이다.
+NOCYCLE | CYCLE : NOCYCLE (반복안함), CYCLE(시퀀스의 최댓값에 도달 시 최솟값 1부터 다시시작)
+NOCACHE | CACHE : NOCACHE(사용안함), CACHE(캐시를 사용하여 미리 값을 할당해 놓아서 속도가 빠르며, 동시 사용자가 많을 경우 유리)
+NOORDER | ORDER : NOORDER(사용안함), ORDER(요청 순서로 값을 생성하여 발생 순서를 보장하지만 조금의 시스템 부하가 있음)

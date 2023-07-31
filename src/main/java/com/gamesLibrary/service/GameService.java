@@ -28,12 +28,14 @@ public interface GameService {
 			
 			Set<Game> getGameListByFilter(Map<String, List<String>> filter);
 			
-			
-		
 		//board
 			List<Board> getAllBoardList();
 		
 	//Update
+		//game
+			void updateOneGame(Game game);
+			
+		//board
 
 	//Delete
 		void deleteOneGame(int gameid);

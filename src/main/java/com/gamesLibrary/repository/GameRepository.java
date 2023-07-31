@@ -32,7 +32,8 @@ public interface GameRepository {
 		List<Board> getAllBoardList();
 	
 	//Update
-	
+		//game
+			void updateOneGame(Game game);
 	//Delete
 		
 		void deleteOneGame(int gameid);

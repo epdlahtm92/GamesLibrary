@@ -16,18 +16,6 @@
 			<fieldset>
 			<legend>${ addTitle }</legend>
 			<div class="form-group row">
-				<label class="col-sm-2 control-label">루트 코드</label>
-				<div class="col -sm-3">
-					<form:input path="rootId" class="form-control" />
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2 control-label">글 코드</label>
-				<div class="col -sm-3">
-					<form:input path="postId" class="form-control" />
-				</div>
-			</div>
-			<div class="form-group row">
 				<label class="col-sm-2 control-label">타이틀</label>
 				<div class="col -sm-3">
 					<form:input path="title" class="form-control" />

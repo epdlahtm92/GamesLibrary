@@ -48,8 +48,15 @@ public class GameController {
 		return "game";
 	}
 
-	@GetMapping("/title/{title}")
-	public String requestGamesByTitle(@PathVariable("title") String gameTitle, Model model) {
+//	@GetMapping("/title/{title}")
+//	public String requestGamesByTitle(@PathVariable("title") String gameTitle, Model model) {
+//		List<Game> gamesByTitle = gameService.getGameListByTitle(gameTitle);
+//		model.addAttribute("gameList", gamesByTitle);
+//
+//		return "games";
+//	}
+	@GetMapping("/title")
+	public String requestGamesByTitle(@RequestParam("gameTitle") String gameTitle, Model model) {
 		List<Game> gamesByTitle = gameService.getGameListByTitle(gameTitle);
 		model.addAttribute("gameList", gamesByTitle);
 
@@ -94,7 +101,31 @@ public class GameController {
 		gameService.setNewGame(game);
 		return "redirect:/all";
 	}
+	
+	@GetMapping("/admin/update")
+	public String requestUpdateGameForm(@ModelAttribute("newGame") Game game) {
+		
+		return "addGame";
+	}
+	
+	@PostMapping("/admin/update")
+	public String submitUpdateGame(@ModelAttribute("newGame") Game game) {
+		String uuid = UUID.randomUUID().toString().replaceAll(" ", "");
+		String title = game.getTitle().replaceAll(" ", "");
+		String originalFilename = game.getImageFile().getOriginalFilename().replaceAll(" ","");
+		String imageFileName = uuid + "_" +title + "_" + originalFilename;
 
+		game.setImgPath(imageFileName);
+		try {
+			game.getImageFile().transferTo(new File("C:\\03StringWorkspace\\GamesLibrary\\src\\main\\webapp\\resources\\imageFiles\\" + imageFileName));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		gameService.updateOneGame(game);
+		return "redirect:/all";
+	}
+	
 	@GetMapping("/admin/delete")
 	public String requestDeleteGame(@RequestParam("id") String gameId) {
 		gameService.deleteOneGame(Integer.parseInt(gameId));
@@ -104,6 +135,7 @@ public class GameController {
 	@ModelAttribute
 	public void addAttribute(Model model) {
 		model.addAttribute("addTitle", "신규 게임 등록");
+		model.addAttribute("updateTitle", "게임 설명 수정");	
 	}
 
 	//	@InitBinder

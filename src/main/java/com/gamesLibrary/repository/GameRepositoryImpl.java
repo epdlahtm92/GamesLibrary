@@ -130,4 +130,10 @@ public class GameRepositoryImpl implements GameRepository {
 		gameMapper.insertOneBoard(board);
 	}
 
+	@Override
+	public void updateOneGame(Game game) {
+		// TODO Auto-generated method stub
+		gameMapper.updateOneGame(game);
+	}
+
 }

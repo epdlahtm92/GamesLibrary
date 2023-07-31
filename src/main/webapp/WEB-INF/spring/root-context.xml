@@ -24,7 +24,7 @@
     
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.23.66:1521:xe"></property>
 		<property name="username" value="GAMELIBRARY"></property>
 		<property name="password" value="kopo1717"></property>
 	</bean>
