@@ -82,4 +82,24 @@ public class GameServiceImpl implements GameService {
 		gameRepository.updateOneGame(game);
 	}
 
+	@Override
+	public Board getPostById(String postId) {
+		// TODO Auto-generated method stub
+		return gameRepository.getPostById(postId);
+	}
+
+	@Override
+	public void deleteOnePost(int postId) {
+		// TODO Auto-generated method stub
+		gameRepository.deleteOnePost(postId);
+		
+	}
+
+	@Override
+	public void updateOnePost(Board board) {
+		// TODO Auto-generated method stub
+		gameRepository.updateOnePost(board);
+		
+	}
+
 }

@@ -1,11 +1,14 @@
 package com.gamesLibrary.domain;
 
+import java.sql.Date;
+
 public class Board {
 	private int rootId;
 	private int postId;
 	private String title;
 	private String content;
 	private String userName;
+	private Date postDate;
 	
 	public Board() {
 		super();
@@ -59,6 +62,14 @@ public class Board {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public Date getPostDate() {
+		return postDate;
+	}
+
+	public void setPostDate(Date postDate) {
+		this.postDate = postDate;
 	}
 	
 	

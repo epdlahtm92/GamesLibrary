@@ -11,17 +11,13 @@
 		
 		<!-- board -->
 		<insert id="insertOnePost" parameterType="com.gamesLibrary.domain.Board">
-			insert into board (rootid, postid, title, content, username) values (${Board.rootId}, ${Board.postId}, #{Board.title}, #{Board.content}, #{Board.userName})
+			insert into board (rootid, postid, title, content, username, postdate) values (${Board.rootId}, board_seq.nextval, #{Board.title}, #{Board.content}, #{Board.userName}, sysdate)
 		</insert>
 	
 	<!-- read  -->
 		<!-- game  -->
 		<select id="getAll" resultType="com.gamesLibrary.domain.Game">
 			select * from gamelist order by gameid
-		</select>
-	
-		<select id="getOneById" resultType="com.gamesLibrary.domain.Game">
-			select * from gamelist where gameid=1
 		</select>
 	
 		<select id="searchTitle" parameterType="String" resultType="com.gamesLibrary.domain.Game">
@@ -35,12 +31,23 @@
 	
 	<!-- update -->
 		<!-- game -->
-		<!-- <update id="updateOne" parameterType="com.gamesLIbrary.domain.Game">
-			update gamelist set title= #{ Game.title }, developer = #{ Game.developer }, developercountry = #{ Game.developercountry }, publisher = #{ Game.publisher }, publishercountry= #{ Game.publisherCountry }, seriesname = #{ Game.seriesName }, seriesnumber = #{ Game.seriesNumber }, genre = #{ Game.genre }, imgpath = #{ Game.imgPath }, price = #{ Game.price }, releasedate = #{ Game.releaseDate }, description = #{ Game.description } where gameid= ${ Game.gameid }
-		</update> -->
+			<!-- update gamelist set title= #{ Game.title }, developer = #{ Game.developer }, developercountry = #{ Game.developercountry }, publisher = #{ Game.publisher }, publishercountry= #{ Game.publisherCountry }, seriesname = #{ Game.seriesName }, seriesnumber = #{ Game.seriesNumber }, genre = #{ Game.genre }, imgpath = #{ Game.imgPath }, price = #{ Game.price }, releasedate = #{ Game.releaseDate }, description = #{ Game.description } where gameid= ${ Game.gameid } -->
+		
+		<!--board -->
+			<update id="updatePost" parameterType="com.gamesLibrary.domain.Board">
+					update board set title = #{ Board.title }, content = #{ Board.content }, postdate = sysdate where postid = ${ Board.postId }
+			</update>
+		
+		
 	<!-- delete -->
-	<delete id="deleteOne" parameterType="Integer" >
-		delete from gamelist where gameid = ${ gameid }
-	</delete> 
+		<!-- game  -->
+			<delete id="deleteOne" parameterType="Integer" >
+				delete from gamelist where gameid = ${ gameid }
+			</delete> 
+			
+		<!--  board  -->
+			<delete id="deleteOneBoard" parameterType="Integer">
+				delete from board where postid = ${ postId }
+			</delete>
 	
 </mapper>

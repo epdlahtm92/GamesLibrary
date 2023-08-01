@@ -48,13 +48,6 @@ public class GameController {
 		return "game";
 	}
 
-//	@GetMapping("/title/{title}")
-//	public String requestGamesByTitle(@PathVariable("title") String gameTitle, Model model) {
-//		List<Game> gamesByTitle = gameService.getGameListByTitle(gameTitle);
-//		model.addAttribute("gameList", gamesByTitle);
-//
-//		return "games";
-//	}
 	@GetMapping("/title")
 	public String requestGamesByTitle(@RequestParam("gameTitle") String gameTitle, Model model) {
 		List<Game> gamesByTitle = gameService.getGameListByTitle(gameTitle);

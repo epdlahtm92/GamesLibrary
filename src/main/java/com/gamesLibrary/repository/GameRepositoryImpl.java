@@ -37,7 +37,7 @@ public class GameRepositoryImpl implements GameRepository {
 	@Override
 	public List<Game> getAllGameList() {
 		// TODO Auto-generated method stub
-		listOfGames= gameMapper.getAllGame();
+		listOfGames = gameMapper.getAllGame();
 		return listOfGames;
 	}
 
@@ -55,6 +55,28 @@ public class GameRepositoryImpl implements GameRepository {
 			throw new IllegalArgumentException("해당 아이디의 게임 정보를 찾을 수 없습니다. : " + gameId);
 		}
 		return gameInfo;
+	}
+	
+	@Override
+	public Board getPostById(String postId) {
+		// TODO Auto-generated method stub
+		Board boardInfo = null;
+		for (Board board : listOfBoards) {
+			if (board != null && board.getPostId() != 0 && board.getPostId() == Integer.parseInt(postId)) {
+				boardInfo = board;
+				break;
+			}
+		}
+		if (boardInfo == null) {
+			throw new IllegalArgumentException("해당 글 찾을 수 없음" + postId);
+		}
+		return boardInfo;
+	}
+	@Override
+	public List<Board> getAllBoardList() {
+		// TODO Auto-generated method stub
+		listOfBoards = gameMapper.getAllPosts();
+		return listOfBoards;
 	}
 	
 	@Override
@@ -117,12 +139,7 @@ public class GameRepositoryImpl implements GameRepository {
 		gameMapper.deleteOneGame(gameid);
 	}
 
-	@Override
-	public List<Board> getAllBoardList() {
-		// TODO Auto-generated method stub
-		listOfBoards = gameMapper.getAllPosts();
-		return listOfBoards;
-	}
+	
 
 	@Override
 	public void setNewPost(Board board) {
@@ -135,5 +152,20 @@ public class GameRepositoryImpl implements GameRepository {
 		// TODO Auto-generated method stub
 		gameMapper.updateOneGame(game);
 	}
+
+	@Override
+	public void deleteOnePost(int postId) {
+		// TODO Auto-generated method stub
+		gameMapper.deleteOnePost(postId);
+	}
+
+	@Override
+	public void updateOnePost(Board board) {
+		// TODO Auto-generated method stub
+		gameMapper.updateOnePost(board);
+		
+	}
+
+	
 
 }

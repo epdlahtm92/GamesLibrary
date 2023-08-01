@@ -13,19 +13,19 @@
 	<%@ include file="./inc/header.jsp" %>
 
 	<div class="container">
-		<form:form modelAttribute="newPost" class="form-horizontal" method="post" enctype="multipart/form-data">
+		<form:form modelAttribute="updatePost" class="form-horizontal" method="post" enctype="multipart/form-data">
 			<fieldset>
 			<legend>${ addTitle }</legend>
 			<div class="form-group row">
 				<label class="col-sm-2 control-label">타이틀</label>
 				<div class="col -sm-3">
-					<form:input path="title" class="form-control" />
+					<form:input path="title" class="form-control" value="${ newPost.title }" />
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2 control-label">내용</label>
 				<div class="col -sm-3">
-					<form:textarea path="content" cols="50" rows="2" class="form-control"></form:textarea>
+					<form:textarea path="content" cols="50" rows="2" class="form-control" value="${ newPost.content }" />
 				</div>
 			</div>
 			<div class="form-group row">

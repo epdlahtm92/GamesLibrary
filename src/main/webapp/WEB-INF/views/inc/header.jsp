@@ -21,16 +21,13 @@
 				style="color: white; text-decoration: none"
 				href="${ pageContext.request.contextPath }/all">GAME LIBRARY</a></span>
 		</div>
-		<form class="form-inline"
-			action="${ pageContext.request.contextPath }/title" method="get">
+		<form class="form-inline" action="${ pageContext.request.contextPath }/title" method="get">
 			<div class="form-group mx-sm-3 mb-2">
-				<input type="text" class="form-control" name="gameTitle"
-					placeholder="타이틀을 입력하세요">
+				<input type="text" class="form-control" name="gameTitle" placeholder="타이틀을 입력하세요">
 			</div>
 			<button type="submit" class="btn btn-primary mb-2">search</button>
 		</form>
 	</div>
-
 	<nav class="navbar navbar-expand navbar-dark bg-dark" style="margin-bottom: 50px; padding-right:45px;">
 		<div class="container"
 			style="margin-left: 10px; margin-right: 10px; display: flex;">
@@ -47,17 +44,16 @@
 					href="${ pageContext.request.contextPath }/admin/add">신규 등록</a>
 			</div>
 		</div>
-		<div class="container" align="right">
-		<sec:authorize access="isAuthenticated()" var="isAuthenicated"></sec:authorize>
+		<div class="float-right" style="width:200px; displsy:inline-block">
+		<sec:authorize access="isAuthenticated()" var="isAuthenicated" />
 		<c:choose>
 			<c:when test="${ isAuthenicated }">
-				<span style="color: white; font-weight: bold; margin-right:20px;">
-					<sec:authentication property="principal.username" /> 님
-					<form class="form-inline" action="./logout" method="POST">
+				<span style="color: white; font-weight: bold; margin-right:20px; displsy:inline-block">
+					<sec:authentication property="principal.username" var="username" /> 님</span>
+					<form class="form-inline" action="./logout" method="post">
 						<button type="submit" class="btn btn-secondary mb-1">LOGOUT</button>
-						<input name="${_csrf.parameterName }" type="hidden"
-							value="${_csrf.token }" />
-					</form></span>
+						<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
+					</form>
 			</c:when>
 			<c:otherwise>
 				<button type="button"

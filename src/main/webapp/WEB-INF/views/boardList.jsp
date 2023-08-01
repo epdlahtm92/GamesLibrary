@@ -11,42 +11,31 @@ body {
 }
 </style>
 <link
-	href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css"
-	rel="stylesheet">
+	href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Welcome to Game Library</title>
-<script type="text/javascript">
-	function searchingGame() {
-		var path = pageContextPath;
-		var searchText = document.getElementById("search").value;
-		if (searchText != null) {
-			location.href = "../title/" + searchText;
-		}
-		return false
-	}
-</script>
 </head>
 <body>
 	<%@ include file="./inc/header.jsp"%>
 
 	<div class="container" style="margin-bottom:80px;">
 		<div class="row" align="center">
-			<table class="table">
-				<thead>
+			<table class="table table-hover">
+				<thead class="thead-dark">
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Title</th>
-						<th scope="col">Content</th>
 						<th scope="col">User Name</th>
+						<th scope="col">Post Date</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${ boardList }" var="boardList">
 						<tr>
 							<td>${ boardList.postId }</td>
-							<td>${ boardList.title }</td>
-							<td>${ boardList.content }</td>
+							<td><a style="color:black; text-decoration:none" href="${ pageContext.request.contextPath }/postView?id=${ boardList.postId }">${ boardList.title }</a></td>
 							<td>${ boardList.userName }</td>
+							<td>${ boardList.postDate }</td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -18,23 +18,33 @@ public interface GameRepository {
 	
 	//Read
 		//game
-		List<Game> getAllGameList();
-		
-		Game getGameId(String gameId);
-		
-		List<Game> getGameListByGenre(String genre);
-		
-		List<Game> getGameListByTitle(String title);
-		
-		Set<Game> getGameListByFilter(Map<String, List<String>> filter);
+			List<Game> getAllGameList();
+			
+			Game getGameId(String gameId);
+			
+			List<Game> getGameListByGenre(String genre);
+			
+			List<Game> getGameListByTitle(String title);
+			
+			Set<Game> getGameListByFilter(Map<String, List<String>> filter);
 		
 		//board
-		List<Board> getAllBoardList();
+			List<Board> getAllBoardList();
+			
+			Board getPostById(String postId);
 	
 	//Update
 		//game
 			void updateOneGame(Game game);
+			
+		//board
+			void updateOnePost(Board board);
+			
 	//Delete
+		//game
+			void deleteOneGame(int gameid);
 		
-		void deleteOneGame(int gameid);
+		//board
+			void deleteOnePost(int postId);
+		
 }

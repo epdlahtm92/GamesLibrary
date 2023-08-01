@@ -19,7 +19,7 @@ public interface GameMapper {
 		public void insertOneGame(@Param("Game") Game game);
 		
 		//Board
-		@Insert("insert into board (postid, title, content, username) values (board_seq.nextval, board_seq.currval, #{Board.title}, #{Board.content}, #{Board.userName})")
+		@Insert("insert into board (rootid, postid, title, content, username, postdate) values (${Board.rootId}, board_seq.nextval, #{Board.title}, #{Board.content}, #{Board.userName}, sysdate)")
 		public void insertOneBoard(@Param("Board") Board board);
 		
 	//read
@@ -44,6 +44,8 @@ public interface GameMapper {
 			public void updateOneGame(@Param("Game") Game game);
 			
 		//board
+			@Update("update board set title= #{ Board.title }, content = #{ Board.content }, postdate = sysdate where postid = ${ Board.postId }")
+			public void updateOnePost(@Param("Board") Board board);
 	
 	//delete
 		//game
@@ -51,4 +53,6 @@ public interface GameMapper {
 			public void deleteOneGame(@Param("gameid") int gameid);
 		
 		//board
+			@Delete("delete from board where postid = ${ postId }")
+			public void deleteOnePost(@Param("postId") int postId);
 }

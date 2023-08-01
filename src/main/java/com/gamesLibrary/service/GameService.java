@@ -30,13 +30,20 @@ public interface GameService {
 			
 		//board
 			List<Board> getAllBoardList();
+			
+			Board getPostById(String postId);
 		
 	//Update
 		//game
 			void updateOneGame(Game game);
 			
 		//board
+			void updateOnePost(Board board);
 
 	//Delete
-		void deleteOneGame(int gameid);
+		//game
+			void deleteOneGame(int gameid);
+			
+		//board
+			void deleteOnePost(int postId);
 }
