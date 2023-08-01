@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
@@ -11,17 +10,16 @@
 <title>Add Game Page</title>
 </head>
 <body>
-	<%@ include file="./inc/header.jsp"%>
-
+	<%@ include file="./inc/header.jsp" %>
+	
 	<div class="container">
-		<form:form modelAttribute="newGame" class="form-horizontal"
-			method="post" enctype="multipart/form-data">
+		<form:form modelAttribute="newGame" class="form-horizontal" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>${ addTitle }</legend>
 				<div class="form-group row">
 					<label class="col-sm-2 control-label">타이틀</label>
 					<div class="col -sm-3">
-						<form:input path="title" class="form-control" />
+						<form:input path="title" id="titleText" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group row">
@@ -92,7 +90,7 @@
 					<label class="col-sm-2 control-label">지원 플랫폼</label>
 					<div class="col -sm-3">
 						<div class="input-group-text">
-							<span>PC</span><form:checkbox path="platform" value="pc" class="form-control" style="height:60%;"/>
+							<span>PC</span><form:checkbox path="platform" value="pc" class="form-control" />
 							<span>Playstation</span><form:checkbox path="platform" value="playstation" class="form-control" />
 							<span>XBOX</span><form:checkbox path="platform" value="xbox" class="form-control" />
 							<span>NINTENDO</span><form:checkbox path="platform" value="nintendo" class="form-control"  />

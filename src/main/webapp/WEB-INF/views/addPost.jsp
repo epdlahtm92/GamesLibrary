@@ -35,8 +35,8 @@
 					<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
 				</div>
 			</div>
-			<div class="form-group row">
-				<div class="col -sm-offset-2 col -sm-10">
+			<div class="float-right">
+				<div class="col -sm-offset-2 col -sm-10" style="padding-right:0px;">
 					<input type="submit" class="btn btn-primary" value="등록" />
 					<input type="reset" class="btn btn-warning" value="다시쓰기" />
 				</div>
