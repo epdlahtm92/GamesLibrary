@@ -25,42 +25,35 @@
 			<div class="form-group mx-sm-3 mb-2">
 				<input type="text" class="form-control" name="gameTitle" placeholder="타이틀을 입력하세요">
 			</div>
-			<button type="submit" class="btn btn-primary mb-2">search</button>
+			<button type="submit" class="btn btn-primary mb-2">검색</button>
 		</form>
 	</div>
 	<nav class="navbar navbar-expand navbar-dark bg-dark" style="margin-bottom: 50px; padding-right:45px;">
-		<div class="container"
-			style="margin-left: 10px; margin-right: 10px; display: flex;">
+		<div class="container" style="margin-left: 10px; margin-right: 10px; display: flex;">
 			<div class="navbar-header">
-				<a class="navbar-brand"
-					href="${ pageContext.request.contextPath }/home"><img
-					height="35px"
-					src="${ pageContext.request.contextPath }/resources/imageFiles/icon/iconHome.png"></a>
-				<a class="navbar-brand"
-					href="${ pageContext.request.contextPath }/all">게임 목록</a> <a
-					class="navbar-brand"
-					href="${ pageContext.request.contextPath }/boardList">게시판</a> <a
-					class="navbar-brand"
-					href="${ pageContext.request.contextPath }/admin/add">신규 등록</a>
+				<a class="navbar-brand" href="${ pageContext.request.contextPath }/home">
+					<img height="35px" src="${ pageContext.request.contextPath }/resources/imageFiles/icon/iconHome.png">
+				</a>
+				<a class="navbar-brand" href="${ pageContext.request.contextPath }/all">게임 목록</a> 
+				<a class="navbar-brand" href="${ pageContext.request.contextPath }/admin/add">신규 등록</a>
+				<a class="navbar-brand" href="${ pageContext.request.contextPath }/boardList">게시판</a> 
 			</div>
 		</div>
 		<div class="float-right" style="width:200px; displsy:inline-block">
-		<sec:authorize access="isAuthenticated()" var="isAuthenicated" />
-		<c:choose>
-			<c:when test="${ isAuthenicated }">
-				<span style="color: white; font-weight: bold; margin-right:20px; displsy:inline-block">
-					<sec:authentication property="principal.username" var="username" /> 님</span>
-					<form class="form-inline" action="./logout" method="post">
-						<button type="submit" class="btn btn-secondary mb-1">LOGOUT</button>
-						<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
-					</form>
-			</c:when>
-			<c:otherwise>
-				<button type="button"
-					onclick="location.href='${ pageContext.request.contextPath }/login'"
-					class="btn btn-secondary mb-1">Log In</button>
-			</c:otherwise>
-		</c:choose>
+			<sec:authorize access="isAuthenticated()" var="isAuthenicated" />
+			<c:choose>
+				<c:when test="${ isAuthenicated }">
+					<span style="color: white; font-weight: bold; margin-right:20px; displsy:inline-block">
+						<sec:authentication property="principal.username" var="username" /> ${ username } 님</span>
+						<form class="form-inline" action="./logout" method="post">
+							<button type="submit" class="btn btn-secondary mb-1">로그아웃</button>
+							<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
+						</form>
+				</c:when>
+				<c:otherwise>
+					<button type="button" onclick="location.href='${ pageContext.request.contextPath }/login'" class="btn btn-secondary mb-1">로그인</button>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</nav>
 </body>

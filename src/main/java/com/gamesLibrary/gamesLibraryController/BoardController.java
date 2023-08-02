@@ -21,52 +21,55 @@ public class BoardController {
 	@Autowired
 	private GameService gameService;
 	
-	@GetMapping("/boardList")
-	public String requestBoardList(Model model) {
-		List<Board>boardList = gameService.getAllBoardList();
-		model.addAttribute("boardList", boardList);
-		return "boardList";
-	}
+	// create
+		@GetMapping("/member/addPost")
+		public String requestAddPostForm(@ModelAttribute("newPost") Board board) {
+			return "addPost";
+		}
+		
+		@PostMapping("/member/addPost")
+		public String submitAddNewPost(@ModelAttribute("newPost") Board board, HttpServletRequest request, HttpSession session) {
+			gameService.setNewPost(board);
+			return "redirect:/boardList";
+		}
 	
-	@GetMapping("/member/addPost")
-	public String requestAddPostForm(@ModelAttribute("newPost") Board board) {
-		return "addPost";
-	}
+	// read
+		@GetMapping("/boardList")
+		public String requestBoardList(Model model) {
+			List<Board>boardList = gameService.getAllBoardList();
+			model.addAttribute("boardList", boardList);
+			return "boardList";
+		}
 	
-	@PostMapping("/member/addPost")
-	public String submitAddNewPost(@ModelAttribute("newPost") Board board, HttpServletRequest request, HttpSession session) {
-		gameService.setNewPost(board);
-		return "redirect:/boardList";
-	}
+		@GetMapping("/postView")
+		public String requestPostById(@RequestParam("id") String postId, Model model) {
+			Board board = gameService.getPostById(postId);
+			model.addAttribute("board", board);
+			return "postView";
+		}
 	
-	@GetMapping("/postView")
-	public String requestPostById(@RequestParam("id") String postId, Model model) {
-		Board board = gameService.getPostById(postId);
-		model.addAttribute("board", board);
-		return "postView";
-	}
-	
-	@GetMapping("/admin/deletePost")
-	public String requestDeletePost(@RequestParam("postId") String postId) {
-		gameService.deleteOnePost(Integer.parseInt(postId));
-		return "redirect:/boardList";
-	}
-	
-	@GetMapping("/admin/updatePost")
-	public String requestUpdatePostForm(@RequestParam("postId") String postId, Model model) {
-		Board board = gameService.getPostById(postId);
-		model.addAttribute("updatePost", board);
-		return "updatePost";
-	}
-	
-	@PostMapping("/admin/updatePost")
-	public String submitUpdatePost(@ModelAttribute("updatePost") Board board, Model model) {
-		gameService.updateOnePost(board);
-		gameService.getAllBoardList();
-		String postId = Integer.toString(board.getPostId());
-		Board resultBoard = gameService.getPostById(postId);
-		model.addAttribute("board", resultBoard);
-		return "postView";
-	}
-
+	// update
+		@GetMapping("/admin/updatePost")
+		public String requestUpdatePostForm(@RequestParam("postId") String postId, Model model) {
+			Board board = gameService.getPostById(postId);
+			model.addAttribute("updatePost", board);
+			return "updatePost";
+		}
+		
+		@PostMapping("/admin/updatePost")
+		public String submitUpdatePost(@ModelAttribute("updatePost") Board board, Model model) {
+			gameService.updateOnePost(board);
+			gameService.getAllBoardList();
+			String postId = Integer.toString(board.getPostId());
+			Board resultBoard = gameService.getPostById(postId);
+			model.addAttribute("board", resultBoard);
+			return "postView";
+		}
+		
+	// delete
+		@GetMapping("/admin/deletePost")
+		public String requestDeletePost(@RequestParam("postId") String postId) {
+			gameService.deleteOnePost(Integer.parseInt(postId));
+			return "redirect:/boardList";
+		}
 }

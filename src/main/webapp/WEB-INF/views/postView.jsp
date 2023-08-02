@@ -17,11 +17,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col -md-4">
-					<h3>${ board.title }</h3>
-					<p><b>작성자 : </b>${ board.userName } | ${ board.postDate }
-					<p><b>내용 : </b>${ board.content }
+					<h3><c:out value="${ board.title }" /></h3>
+					<p><b>작성자 : </b><c:out value="${ board.userName } | ${ board.postDate }" />
+					<p><b>내용 : </b><c:out value="${ board.content }" />
 					<br />
-					<p><a href="#" class="btn btn-primary">게임 주문 &raquo;</a>
+					<p><a href="" class="btn btn-primary">게임 주문 &raquo;</a>
 						 <a href="${ pageContext.request.contextPath }/boardList" class="btn btn-secondary">글 목록 &raquo;</a>
 						 <sec:authorize access="hasAuthority('ROLE_ADMIN')" var="isAdmin" ></sec:authorize>
 						 	<c:choose>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.gamesLibrary.domain.Board;
 import com.gamesLibrary.domain.Game;
+import com.gamesLibrary.domain.Reply;
 import com.gamesLibrary.repository.GameRepository;
 
 @Service
@@ -100,6 +101,12 @@ public class GameServiceImpl implements GameService {
 		// TODO Auto-generated method stub
 		gameRepository.updateOnePost(board);
 		
+	}
+
+	@Override
+	public List<Reply> getAllReply(String rootId, String category) {
+		// TODO Auto-generated method stub
+		return gameRepository.getAllReply(rootId, category);
 	}
 
 }

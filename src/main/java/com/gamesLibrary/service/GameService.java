@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.gamesLibrary.domain.Board;
 import com.gamesLibrary.domain.Game;
+import com.gamesLibrary.domain.Reply;
 
 public interface GameService {
 
@@ -32,6 +33,9 @@ public interface GameService {
 			List<Board> getAllBoardList();
 			
 			Board getPostById(String postId);
+		
+		//reply
+			List<Reply>getAllReply(String rootId, String category);
 		
 	//Update
 		//game

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.gamesLibrary.domain.Board;
 import com.gamesLibrary.domain.Game;
+import com.gamesLibrary.domain.Reply;
 import com.gamesLibrary.mapper.GameMapper;
 
 @Repository
@@ -21,6 +22,7 @@ public class GameRepositoryImpl implements GameRepository {
 	
 	private List<Game> listOfGames = new ArrayList<Game>();
 	private List<Board> listOfBoards = new ArrayList<Board>();
+	private List<Reply> listOfReply = new ArrayList<Reply>();
 	
 	public GameRepositoryImpl() {
 		super();
@@ -139,8 +141,6 @@ public class GameRepositoryImpl implements GameRepository {
 		gameMapper.deleteOneGame(gameid);
 	}
 
-	
-
 	@Override
 	public void setNewPost(Board board) {
 		// TODO Auto-generated method stub
@@ -164,6 +164,13 @@ public class GameRepositoryImpl implements GameRepository {
 		// TODO Auto-generated method stub
 		gameMapper.updateOnePost(board);
 		
+	}
+
+	@Override
+	public List<Reply> getAllReply(String rootId, String category) {
+		// TODO Auto-generated method stub
+		listOfReply = gameMapper.getAllReply(rootId, category);
+		return listOfReply;
 	}
 
 	

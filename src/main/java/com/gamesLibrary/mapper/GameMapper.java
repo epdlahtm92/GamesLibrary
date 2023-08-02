@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.gamesLibrary.domain.Board;
 import com.gamesLibrary.domain.Game;
+import com.gamesLibrary.domain.Reply;
 
 public interface GameMapper {
 
@@ -36,11 +37,14 @@ public interface GameMapper {
 		//Board
 			@Select("select * from board order by postid")
 			public List<Board> getAllPosts();
-		
+			
+		//Reply
+			@Select("select * from reply where rootid = #{ rootId } and category = #{ category } order by postid")
+			public List<Reply> getAllReply(@Param("rootId") String rootId, @Param("category") String category);
 		
 	//update
 		//game
-			@Update("update gamelist set title= #{ Game.title }, developer = #{ Game.developer }, developercountry = #{ Game.developercountry }, publisher = #{ Game.publisher }, publishercountry= #{ Game.publisherCountry }, seriesname = #{ Game.seriesName }, seriesnumber = #{ Game.seriesNumber }, genre = #{ Game.genre }, imgpath = #{ Game.imgPath }, price = #{ Game.price }, releasedate = #{ Game.releaseDate }, description = #{ Game.description } where gameid= ${ Game.gameid }")
+			@Update("update gamelist set title= #{ Game.title }, developer = #{ Game.developer }, developercountry = #{ Game.developerCountry }, publisher = #{ Game.publisher }, publishercountry= #{ Game.publisherCountry }, seriesname = #{ Game.seriesName }, seriesnumber = #{ Game.seriesNumber }, genre = #{ Game.genre }, imgpath = #{ Game.imgPath }, price = #{ Game.price }, releasedate = #{ Game.releaseDate }, description = #{ Game.description } where gameid= ${ Game.gameId }")
 			public void updateOneGame(@Param("Game") Game game);
 			
 		//board

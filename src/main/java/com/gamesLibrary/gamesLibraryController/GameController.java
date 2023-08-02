@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gamesLibrary.domain.Game;
+import com.gamesLibrary.domain.Reply;
 import com.gamesLibrary.service.GameService;
 
 @Controller
@@ -41,10 +42,17 @@ public class GameController {
 	}
 	
 	@GetMapping("/game")
-	public String requestByGameId(@RequestParam("id") String gameId, Model model) {
+	public String requestByGameId(@RequestParam("id") String gameId, Model model, @ModelAttribute("newReply") Reply reply) {
 		Game game = gameService.getGameId(gameId);
+		List<Reply> replyList = gameService.getAllReply(gameId, "game");
 		model.addAttribute("game", game);
-
+		model.addAttribute("replyList", replyList);
+		return "game";
+	}
+	
+	@PostMapping("/member/addReply")
+	public String submitAddReply(@ModelAttribute("newReply") Reply reply) {
+		
 		return "game";
 	}
 
@@ -95,14 +103,15 @@ public class GameController {
 		return "redirect:/all";
 	}
 	
-	@GetMapping("/admin/update")
-	public String requestUpdateGameForm(@ModelAttribute("newGame") Game game) {
-		
-		return "addGame";
+	@GetMapping("/admin/updateGame")
+	public String requestUpdateGameForm(@RequestParam("gameId") String gameId, Model model) {
+		Game game = gameService.getGameId(gameId);
+		model.addAttribute("updateGame", game);
+		return "updateGame";
 	}
 	
-	@PostMapping("/admin/update")
-	public String submitUpdateGame(@ModelAttribute("newGame") Game game) {
+	@PostMapping("/admin/updateGame")
+	public String submitUpdateGame(@ModelAttribute("updateGame") Game game, Model model) {
 		String uuid = UUID.randomUUID().toString().replaceAll(" ", "");
 		String title = game.getTitle().replaceAll(" ", "");
 		String originalFilename = game.getImageFile().getOriginalFilename().replaceAll(" ","");
@@ -116,11 +125,15 @@ public class GameController {
 		}
 		
 		gameService.updateOneGame(game);
-		return "redirect:/all";
+		gameService.getAllGameList();
+		Game resultGame = gameService.getGameId(Integer.toString(game.getGameId()));
+		model.addAttribute("game", resultGame);
+		
+		return "game";
 	}
 	
 	@GetMapping("/admin/delete")
-	public String requestDeleteGame(@RequestParam("id") String gameId) {
+	public String requestDeleteGame(@RequestParam("postId") String gameId) {
 		gameService.deleteOneGame(Integer.parseInt(gameId));
 		return "redirect:/all";
 	}
