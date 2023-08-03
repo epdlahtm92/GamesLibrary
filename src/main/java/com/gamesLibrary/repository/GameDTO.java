@@ -24,7 +24,6 @@ public class GameDTO {
 	
 	public GameDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getGameId() {

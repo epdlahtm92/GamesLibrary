@@ -3,12 +3,12 @@
 <html>
 <head>
 	<title>Home</title>
+	<link
+	href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+	<%@ include file="./inc/header.jsp" %>
+	<%@ include file="./inc/footer.jsp" %>
 </body>
 </html>

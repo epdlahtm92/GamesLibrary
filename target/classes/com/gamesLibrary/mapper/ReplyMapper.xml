@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gamesLibrary.mapper.ReplyMapper">
+
+	<!-- Create -->
+		<insert id="insertOneReply" parameterType="com.gamesLibrary.domain.Reply">
+			insert into reply (rootid, postid, username, content, postdate, category) values (${ Reply.rootId }, reply_seq.nextval, #{ Reply.userName }, #{ Reply.content }, sysdate, #{ Reply.category })
+		</insert>
+			
+	<!-- Read -->
+		<select id="getReply" parameterType="String" resultType="com.gamesLibrary.domain.Reply">
+			select * from reply where rootid = #{ rootId } and category = #{ category } order by postid
+		</select>
+			
+	<!-- Update -->
+	
+	<!-- Delete -->
+
+</mapper>

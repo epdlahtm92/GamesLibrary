@@ -69,6 +69,24 @@ public class CustomUserDetails implements UserDetails {
 	public void setRegisterDate(Date registerDate) {
 		this.registerDate = registerDate;
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setAuthority() {
+		this.authority = "";
+	}
+
+	
 	
 	
 

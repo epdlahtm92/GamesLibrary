@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gamesLibrary.mapper.BoardMapper">
+	
+	<!--  Create  -->
+		<insert id="insertOnePost" parameterType="com.gamesLibrary.domain.Board">
+				insert into board (rootid, postid, title, content, username, postdate) values (${Board.rootId}, board_seq.nextval, #{Board.title}, #{Board.content}, #{Board.userName}, sysdate)
+		</insert>
+	
+	<!--  Read -->
+		<select id="getAllPost" resultType="com.gamesLibrary.domain.Board">
+			select * from board order by postid
+		</select>
+		
+	<!-- Update -->
+		<update id="updatePost" parameterType="com.gamesLibrary.domain.Board">
+				update board set title = #{ Board.title }, content = #{ Board.content }, postdate = sysdate where postid = ${ Board.postId }
+		</update>
+		
+	<!-- Delete -->
+		<delete id="deleteOneBoard" parameterType="Integer">
+			delete from board where postid = ${ postId }
+		</delete>
+		
+</mapper>

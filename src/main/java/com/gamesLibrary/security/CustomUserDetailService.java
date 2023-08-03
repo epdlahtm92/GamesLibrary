@@ -18,5 +18,8 @@ public class CustomUserDetailService implements UserDetailsService {
 		}
 		return user;
 	}
-
+	
+	public void createUser(CustomUserDetails customUserDetails) {
+		userAuthDAO.createUser(customUserDetails);
+	}
 }

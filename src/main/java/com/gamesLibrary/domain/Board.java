@@ -3,6 +3,7 @@ package com.gamesLibrary.domain;
 import java.sql.Date;
 
 public class Board {
+	
 	private int rootId;
 	private int postId;
 	private String title;
@@ -12,7 +13,6 @@ public class Board {
 	
 	public Board() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Board(int rootid, int postid, String title, String content, String user) {

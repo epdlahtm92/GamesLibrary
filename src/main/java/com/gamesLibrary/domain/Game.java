@@ -25,10 +25,8 @@ public class Game {
 	
 	public Game() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	
 	public Game(String title, String developer, String publisher, String seriesName, int price) {
 		super();
 		this.title = title;

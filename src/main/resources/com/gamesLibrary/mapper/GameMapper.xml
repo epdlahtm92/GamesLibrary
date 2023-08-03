@@ -2,69 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gamesLibrary.mapper.GameMapper">
 
-
 	<!--  create  -->
-		<!-- game -->
-			<insert id="insertOne" parameterType="com.gamesLibrary.domain.Game" >
-				insert into gamelist (gameid, title, developer, developercountry, publisher, publishercountry, seriesname, seriesnumber, genre, imgpath, price, releasedate, description) values (gamelist_seq.NEXTVAL, #{ Game.title }, #{ Game.developer }, #{ Game.developerCountry }, #{ Game.publisher }, #{ Game.publisherCountry }, #{ Game.seriesName }, #{ Game.seriesNumber }, #{ Game.genre }, #{ Game.imgPath }, #{ Game.price }, #{ Game.releaseDate }, #{ Game.description })
-			</insert>
-			
-		<!-- board -->
-			<insert id="insertOnePost" parameterType="com.gamesLibrary.domain.Board">
-				insert into board (rootid, postid, title, content, username, postdate) values (${Board.rootId}, board_seq.nextval, #{Board.title}, #{Board.content}, #{Board.userName}, sysdate)
-			</insert>
-		
-		<!-- reply -->
-			<insert id="insertOneReply" parameterType="com.gamesLibrary.domain.Reply">
-				insert into reply (rootid, postid, username, content, postdate, category) values (${ Reply.rootId }, reply_seq.nextval, #{ Reply.userName }, #{ Reply.content }, sysdate, #{ Reply.category })
-			</insert>
-	
+		<insert id="insertOne" parameterType="com.gamesLibrary.domain.Game" >
+			insert into gamelist (gameid, title, developer, developercountry, publisher, publishercountry, seriesname, seriesnumber, genre, imgpath, price, releasedate, description) values (gamelist_seq.NEXTVAL, #{ Game.title }, #{ Game.developer }, #{ Game.developerCountry }, #{ Game.publisher }, #{ Game.publisherCountry }, #{ Game.seriesName }, #{ Game.seriesNumber }, #{ Game.genre }, #{ Game.imgPath }, #{ Game.price }, #{ Game.releaseDate }, #{ Game.description })
+		</insert>
+
 	<!-- read  -->
-		<!-- game  -->
-			<select id="getAll" resultType="com.gamesLibrary.domain.Game">
-				select * from gamelist order by gameid
-			</select>
+		<select id="getAll" resultType="com.gamesLibrary.domain.Game">
+			select * from gamelist order by gameid
+		</select>
+	
+		<select id="searchTitle" parameterType="String" resultType="com.gamesLibrary.domain.Game">
+			select * from gamelist where lower(title) like '%${ gameTitle }%'
+		</select>
 		
-			<select id="searchTitle" parameterType="String" resultType="com.gamesLibrary.domain.Game">
-				select * from gamelist where lower(title) like '%${ gameTitle }%'
-			</select>
-		
-		<!-- board -->
-			<select id="getAllPost" resultType="com.gamesLibrary.domain.Board">
-				select * from board order by postid
-			</select>
-		
-		<!-- reply -->
-			<select id="getReply" parameterType="String" resultType="com.gamesLibrary.domain.Reply">
-				select * from reply where rootid = #{ rootId } and category = #{ category } order by postid
-			</select>
-		
-		<!-- user -->
-			<select id="getOneUser" parameterType="String" resultType="com.gamesLibrary.security.CustomUserDetails">
-				select * from users where username = #{ userName }
-			</select>
-			
 	<!-- update -->
-		<!-- game -->
-			<update id="updateOne" parameterType="com.gamesLibrary.domain.Game">
-				update gamelist set title= #{ Game.title }, developer = #{ Game.developer }, developercountry = #{ Game.developerCountry }, publisher = #{ Game.publisher }, publishercountry= #{ Game.publisherCountry }, seriesname = #{ Game.seriesName }, seriesnumber = #{ Game.seriesNumber }, genre = #{ Game.genre }, imgpath = #{ Game.imgPath }, price = #{ Game.price }, releasedate = #{ Game.releaseDate }, description = #{ Game.description } where gameid= ${ Game.gameId }
-			</update>
-		
-		<!--board -->
-			<update id="updatePost" parameterType="com.gamesLibrary.domain.Board">
-					update board set title = #{ Board.title }, content = #{ Board.content }, postdate = sysdate where postid = ${ Board.postId }
-			</update>
-		
+		<update id="updateOne" parameterType="com.gamesLibrary.domain.Game">
+			update gamelist set title= #{ Game.title }, developer = #{ Game.developer }, developercountry = #{ Game.developerCountry }, publisher = #{ Game.publisher }, publishercountry= #{ Game.publisherCountry }, seriesname = #{ Game.seriesName }, seriesnumber = #{ Game.seriesNumber }, genre = #{ Game.genre }, imgpath = #{ Game.imgPath }, price = #{ Game.price }, releasedate = #{ Game.releaseDate }, description = #{ Game.description } where gameid= ${ Game.gameId }
+		</update>
 		
 	<!-- delete -->
-		<!-- game  -->
-			<delete id="deleteOne" parameterType="Integer" >
-				delete from gamelist where gameid = ${ gameid }
-			</delete> 
-			
-		<!--  board  -->
-			<delete id="deleteOneBoard" parameterType="Integer">
-				delete from board where postid = ${ postId }
-			</delete>
-	
+		<delete id="deleteOne" parameterType="Integer" >
+			delete from gamelist where gameid = ${ gameid }
+		</delete> 
+
 </mapper>
