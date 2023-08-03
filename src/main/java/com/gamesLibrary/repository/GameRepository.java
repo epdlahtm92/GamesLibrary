@@ -16,6 +16,9 @@ public interface GameRepository {
 		
 		//board
 			void setNewPost(Board board);
+		
+		//reply
+			void setNewReply(Reply reply);
 	
 	//Read
 		//game

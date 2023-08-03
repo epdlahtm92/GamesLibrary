@@ -42,35 +42,8 @@
 					<img style="position: absolute; top:0; left:0; width:100%;" src="${ pageContext.request.contextPath }/resources/imageFiles/${ game.imgPath }" alt="사진 없음" />
 				</div>
 			</div>
-			<div class="row" align="center">
-				<table class="table table-hover">
-					<thead class="thead-light">
-						<tr>
-							<th scope="col">User Name</th>
-							<th scope="col">Content</th>
-							<th scope="col">Post Date</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${ replyList }" var="replyList">
-							<tr>
-								<td><c:out value="${ replyList.userName }" /></td>
-								<td><c:out value="${ replyList.content }" /></td>
-								<td><c:out value="${ replyList.postDate }" /></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<form:form modelAttribute="newReply" method="post">
-			  <div class="container" style="padding-left:0px; padding-right:0px;">
-			        <label class="sr-only" for="inlineFormInput">Name</label>
-			        <form:input type="text" class="form-control mb-2" path="content"  placeholder="댓글을 입력하세요" />
-			       	<div class="float-right">
-			       		<button type="submit" class="btn btn-primary mb-2">쓰기</button>
-			       	</div>
-      			</div>
-			</form:form>
+			<c:set var="category" value="game" />
+			<%@ include file="./inc/reply.jsp" %>
 		</div>
 		
 		<%@ include file="./inc/footer.jsp" %>

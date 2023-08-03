@@ -5,14 +5,19 @@
 
 	<!--  create  -->
 		<!-- game -->
-		<insert id="insertOne" parameterType="com.gamesLibrary.domain.Game" >
-			insert into gamelist (gameid, title, developer, developercountry, publisher, publishercountry, seriesname, seriesnumber, genre, imgpath, price, releasedate, description) values (gamelist_seq.NEXTVAL, #{ Game.title }, #{ Game.developer }, #{ Game.developerCountry }, #{ Game.publisher }, #{ Game.publisherCountry }, #{ Game.seriesName }, #{ Game.seriesNumber }, #{ Game.genre }, #{ Game.imgPath }, #{ Game.price }, #{ Game.releaseDate }, #{ Game.description })
-		</insert>
-		
+			<insert id="insertOne" parameterType="com.gamesLibrary.domain.Game" >
+				insert into gamelist (gameid, title, developer, developercountry, publisher, publishercountry, seriesname, seriesnumber, genre, imgpath, price, releasedate, description) values (gamelist_seq.NEXTVAL, #{ Game.title }, #{ Game.developer }, #{ Game.developerCountry }, #{ Game.publisher }, #{ Game.publisherCountry }, #{ Game.seriesName }, #{ Game.seriesNumber }, #{ Game.genre }, #{ Game.imgPath }, #{ Game.price }, #{ Game.releaseDate }, #{ Game.description })
+			</insert>
+			
 		<!-- board -->
-		<insert id="insertOnePost" parameterType="com.gamesLibrary.domain.Board">
-			insert into board (rootid, postid, title, content, username, postdate) values (${Board.rootId}, board_seq.nextval, #{Board.title}, #{Board.content}, #{Board.userName}, sysdate)
-		</insert>
+			<insert id="insertOnePost" parameterType="com.gamesLibrary.domain.Board">
+				insert into board (rootid, postid, title, content, username, postdate) values (${Board.rootId}, board_seq.nextval, #{Board.title}, #{Board.content}, #{Board.userName}, sysdate)
+			</insert>
+		
+		<!-- reply -->
+			<insert id="insertOneReply" parameterType="com.gamesLibrary.domain.Reply">
+				insert into reply (rootid, postid, username, content, postdate, category) values (${ Reply.rootId }, reply_seq.nextval, #{ Reply.userName }, #{ Reply.content }, sysdate, #{ Reply.category })
+			</insert>
 	
 	<!-- read  -->
 		<!-- game  -->
@@ -34,6 +39,11 @@
 				select * from reply where rootid = #{ rootId } and category = #{ category } order by postid
 			</select>
 		
+		<!-- user -->
+			<select id="getOneUser" parameterType="String" resultType="com.gamesLibrary.security.CustomUserDetails">
+				select * from users where username = #{ userName }
+			</select>
+			
 	<!-- update -->
 		<!-- game -->
 			<update id="updateOne" parameterType="com.gamesLibrary.domain.Game">

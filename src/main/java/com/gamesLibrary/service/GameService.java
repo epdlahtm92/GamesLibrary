@@ -16,6 +16,9 @@ public interface GameService {
 			
 		//board
 			void setNewPost(Board board);
+			
+		//reply
+			void setNewReply(Reply reply);
 	
 	//Read
 		//game

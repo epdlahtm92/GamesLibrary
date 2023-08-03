@@ -26,7 +26,6 @@ public class GameRepositoryImpl implements GameRepository {
 	
 	public GameRepositoryImpl() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public GameRepositoryImpl(GameMapper gameMapper, List<Game> listOfGames, List<Board> listOfBoards) {
@@ -38,14 +37,14 @@ public class GameRepositoryImpl implements GameRepository {
 
 	@Override
 	public List<Game> getAllGameList() {
-		// TODO Auto-generated method stub
 		listOfGames = gameMapper.getAllGame();
 		return listOfGames;
 	}
 
 	@Override
 	public Game getGameId(String gameId) {
-		// TODO Auto-generated method stub
+		listOfGames = gameMapper.getAllGame();
+		listOfReply = gameMapper.getAllReply(gameId, "game");
 		Game gameInfo = null;
 		for (Game game : listOfGames) {
 			if (game != null && game.getGameId() != 0 && game.getGameId() == Integer.parseInt(gameId)) {
@@ -61,7 +60,6 @@ public class GameRepositoryImpl implements GameRepository {
 	
 	@Override
 	public Board getPostById(String postId) {
-		// TODO Auto-generated method stub
 		Board boardInfo = null;
 		for (Board board : listOfBoards) {
 			if (board != null && board.getPostId() != 0 && board.getPostId() == Integer.parseInt(postId)) {
@@ -76,21 +74,18 @@ public class GameRepositoryImpl implements GameRepository {
 	}
 	@Override
 	public List<Board> getAllBoardList() {
-		// TODO Auto-generated method stub
 		listOfBoards = gameMapper.getAllPosts();
 		return listOfBoards;
 	}
 	
 	@Override
 	public List<Game> getGameListByTitle(String title) {
-		// TODO Auto-generated method stub
 		listOfGames = gameMapper.getGameListByTitle(title.toLowerCase());
 		return listOfGames;
 	}
 	
 	@Override
 	public List<Game> getGameListByGenre(String genre) {
-		// TODO Auto-generated method stub
 		List<Game> gamesByGenre = new ArrayList<Game>();
 		for (Game game : listOfGames) {
 			if (genre.equalsIgnoreCase(game.getGenre())) {
@@ -102,7 +97,6 @@ public class GameRepositoryImpl implements GameRepository {
 
 	@Override
 	public Set<Game> getGameListByFilter(Map<String, List<String>> filter) {
-		// TODO Auto-generated method stub 
 		Set<Game> gamesByPublisher = new HashSet<Game>();
 		Set<Game> gamesByGenre = new HashSet<Game>();
 		
@@ -131,46 +125,44 @@ public class GameRepositoryImpl implements GameRepository {
 
 	@Override
 	public void setNewGame(Game game) {
-		// TODO Auto-generated method stub
 		gameMapper.insertOneGame(game);
 	}
 
 	@Override
 	public void deleteOneGame(int gameid) {
-		// TODO Auto-generated method stub
 		gameMapper.deleteOneGame(gameid);
 	}
 
 	@Override
 	public void setNewPost(Board board) {
-		// TODO Auto-generated method stub
 		gameMapper.insertOneBoard(board);
 	}
 
 	@Override
 	public void updateOneGame(Game game) {
-		// TODO Auto-generated method stub
 		gameMapper.updateOneGame(game);
 	}
 
 	@Override
 	public void deleteOnePost(int postId) {
-		// TODO Auto-generated method stub
 		gameMapper.deleteOnePost(postId);
 	}
 
 	@Override
 	public void updateOnePost(Board board) {
-		// TODO Auto-generated method stub
 		gameMapper.updateOnePost(board);
 		
 	}
 
 	@Override
 	public List<Reply> getAllReply(String rootId, String category) {
-		// TODO Auto-generated method stub
 		listOfReply = gameMapper.getAllReply(rootId, category);
 		return listOfReply;
+	}
+
+	@Override
+	public void setNewReply(Reply reply) {
+		gameMapper.insertReply(reply);
 	}
 
 	

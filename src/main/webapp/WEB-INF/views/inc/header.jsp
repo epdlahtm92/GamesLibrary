@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +22,15 @@
 		</div>
 		<form class="form-inline" action="${ pageContext.request.contextPath }/title" method="get">
 			<div class="form-group mx-sm-3 mb-2">
+				<div class="dropdown">
+				  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">검색설정</a>
+				  <div class="dropdown-menu">
+				    <a class="dropdown-item" href="#">Title</a>
+				    <a class="dropdown-item" href="#">Genre</a>
+				    <a class="dropdown-item" href="#">Developer</a>
+				    <a class="dropdown-item" href="#">Publisher</a>
+				  </div>
+				</div>
 				<input type="text" class="form-control" name="gameTitle" placeholder="타이틀을 입력하세요">
 			</div>
 			<button type="submit" class="btn btn-primary mb-2">검색</button>
@@ -46,11 +54,13 @@
 					<span style="color: white; font-weight: bold; margin-right:20px; displsy:inline-block">
 						<sec:authentication property="principal.username" var="username" /> ${ username } 님</span>
 						<form class="form-inline" action="./logout" method="post">
+							<button type="submit" class="btn btn-primary" href="">마이페이지</button> 
 							<button type="submit" class="btn btn-secondary mb-1">로그아웃</button>
 							<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
 						</form>
 				</c:when>
 				<c:otherwise>
+					<a class="btn btn-primary" href="">가입하기</a>
 					<button type="button" onclick="location.href='${ pageContext.request.contextPath }/login'" class="btn btn-secondary mb-1">로그인</button>
 				</c:otherwise>
 			</c:choose>
