@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.gamesLibrary.security.CustomUserDetailService;
+import com.gamesLibrary.security.CustomUserDetailsService;
 import com.gamesLibrary.security.CustomUserDetails;
 
 @Controller
 public class SecurityController {
 
 	@Autowired
-	private CustomUserDetailService customUserDetailService;
+	private CustomUserDetailsService customUserDetailService;
 	
 	@GetMapping("/login")
 	public String loginSuccess(HttpServletRequest request) {

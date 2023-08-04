@@ -1,4 +1,4 @@
-package com.gamesLibrary.repository;
+package com.gamesLibrary.DTO;
 
 import java.text.DecimalFormat;
 

@@ -21,12 +21,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gamesLibrary.domain.Game;
 import com.gamesLibrary.domain.Reply;
-import com.gamesLibrary.service.GameService;
+import com.gamesLibrary.service.Service;
 
 @Controller
 public class GameController {
 	@Autowired
-	private GameService gameService;
+	private Service.GameService gameService;
+	
+	@Autowired
+	private Service.ReplyService replyService;
 
 	// Home
 		@GetMapping("/home")
@@ -47,7 +50,7 @@ public class GameController {
 		@GetMapping("/game")
 		public String requestByGameId(@RequestParam("id") String gameId, Model model, @ModelAttribute("newReply") Reply reply) {
 			Game game = gameService.getGameId(gameId);
-			List<Reply> replyList = gameService.getAllReply(gameId, "game");
+			List<Reply> replyList = replyService.getAllReply(gameId, "game");
 			model.addAttribute("game", game);
 			model.addAttribute("replyList", replyList);
 			return "game";
@@ -146,7 +149,7 @@ public class GameController {
 		// Add Reply
 			@PostMapping("/game")
 			public String submitAddReply(@ModelAttribute("newReply") Reply reply) {
-				gameService.setNewReply(reply);
+				replyService.setNewReply(reply);
 				String id = Integer.toString(reply.getRootId());
 				return "redirect:/game?id=" + id;
 			}

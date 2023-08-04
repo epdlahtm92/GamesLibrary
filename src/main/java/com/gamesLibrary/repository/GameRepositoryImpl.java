@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
 import com.gamesLibrary.domain.Board;
 import com.gamesLibrary.domain.Game;
 import com.gamesLibrary.domain.Reply;
-import com.gamesLibrary.mapper.BoardMapper;
 import com.gamesLibrary.mapper.GameMapper;
 import com.gamesLibrary.mapper.ReplyMapper;
+import com.gamesLibrary.repository.Repository.GameRepository;
 
 @Repository
 public class GameRepositoryImpl implements GameRepository {
@@ -23,13 +23,10 @@ public class GameRepositoryImpl implements GameRepository {
 	private GameMapper gameMapper;
 	
 	@Autowired
-	private BoardMapper boardMapper;
-	
-	@Autowired
 	private ReplyMapper replyMapper;
 	
 	private List<Game> listOfGames = new ArrayList<Game>();
-	private List<Board> listOfBoards = new ArrayList<Board>();
+
 	private List<Reply> listOfReply = new ArrayList<Reply>();
 	
 	public GameRepositoryImpl() {
@@ -40,7 +37,7 @@ public class GameRepositoryImpl implements GameRepository {
 		super();
 		this.gameMapper = gameMapper;
 		this.listOfGames = listOfGames;
-		this.listOfBoards = listOfBoards;
+
 	}
 	//Game
 		//Create
@@ -129,52 +126,15 @@ public class GameRepositoryImpl implements GameRepository {
 				gameMapper.deleteOneGame(gameid);
 			}
 			
-////////////////////////////////////////////////////////////			
-	@Override
-	public Board getPostById(String postId) {
-		Board boardInfo = null;
-		for (Board board : listOfBoards) {
-			if (board != null && board.getPostId() != 0 && board.getPostId() == Integer.parseInt(postId)) {
-				boardInfo = board;
-				break;
-			}
-		}
-		if (boardInfo == null) {
-			throw new IllegalArgumentException("해당 글 찾을 수 없음" + postId);
-		}
-		return boardInfo;
-	}
-	@Override
-	public List<Board> getAllBoardList() {
-		listOfBoards = boardMapper.getAllPosts();
-		return listOfBoards;
-	}
 	
-	@Override
-	public void setNewPost(Board board) {
-		boardMapper.insertOneBoard(board);
-	}
+	
 
-	@Override
-	public void deleteOnePost(int postId) {
-		boardMapper.deleteOnePost(postId);
-	}
+	
 
-	@Override
-	public void updateOnePost(Board board) {
-		boardMapper.updateOnePost(board);
-	}
+	
 
-	@Override
-	public List<Reply> getAllReply(String rootId, String category) {
-		listOfReply = replyMapper.getAllReply(rootId, category);
-		return listOfReply;
-	}
+	
 
-	@Override
-	public void setNewReply(Reply reply) {
-		replyMapper.insertReply(reply);
-	}
 
 	
 

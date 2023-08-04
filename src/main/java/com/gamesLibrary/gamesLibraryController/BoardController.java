@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gamesLibrary.domain.Board;
-import com.gamesLibrary.service.GameService;
+import com.gamesLibrary.service.Service;
 
 @Controller
 public class BoardController {
 	@Autowired
-	private GameService gameService;
+	private Service.BoardService boardService;
 	
 	// create
 		@GetMapping("/member/addPost")
@@ -29,21 +29,21 @@ public class BoardController {
 		
 		@PostMapping("/member/addPost")
 		public String submitAddNewPost(@ModelAttribute("newPost") Board board, HttpServletRequest request, HttpSession session) {
-			gameService.setNewPost(board);
+			boardService.setNewPost(board);
 			return "redirect:/boardList";
 		}
 	
 	// read
 		@GetMapping("/boardList")
 		public String requestBoardList(Model model) {
-			List<Board>boardList = gameService.getAllBoardList();
+			List<Board>boardList = boardService.getAllBoardList();
 			model.addAttribute("boardList", boardList);
 			return "boardList";
 		}
 	
 		@GetMapping("/postView")
 		public String requestPostById(@RequestParam("id") String postId, Model model) {
-			Board board = gameService.getPostById(postId);
+			Board board = boardService.getPostById(postId);
 			model.addAttribute("board", board);
 			return "postView";
 		}
@@ -51,17 +51,17 @@ public class BoardController {
 	// update
 		@GetMapping("/admin/updatePost")
 		public String requestUpdatePostForm(@RequestParam("postId") String postId, Model model) {
-			Board board = gameService.getPostById(postId);
+			Board board = boardService.getPostById(postId);
 			model.addAttribute("updatePost", board);
 			return "updatePost";
 		}
 		
 		@PostMapping("/admin/updatePost")
 		public String submitUpdatePost(@ModelAttribute("updatePost") Board board, Model model) {
-			gameService.updateOnePost(board);
-			gameService.getAllBoardList();
+			boardService.updateOnePost(board);
+			boardService.getAllBoardList();
 			String postId = Integer.toString(board.getPostId());
-			Board resultBoard = gameService.getPostById(postId);
+			Board resultBoard = boardService.getPostById(postId);
 			model.addAttribute("board", resultBoard);
 			return "postView";
 		}
@@ -69,7 +69,7 @@ public class BoardController {
 	// delete
 		@GetMapping("/admin/deletePost")
 		public String requestDeletePost(@RequestParam("postId") String postId) {
-			gameService.deleteOnePost(Integer.parseInt(postId));
+			boardService.deleteOnePost(Integer.parseInt(postId));
 			return "redirect:/boardList";
 		}
 }

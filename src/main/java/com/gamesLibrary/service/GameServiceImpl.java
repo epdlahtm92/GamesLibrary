@@ -7,16 +7,15 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gamesLibrary.domain.Board;
 import com.gamesLibrary.domain.Game;
-import com.gamesLibrary.domain.Reply;
-import com.gamesLibrary.repository.GameRepository;
+import com.gamesLibrary.repository.Repository;
+import com.gamesLibrary.service.Service.GameService;
 
 @Service
 public class GameServiceImpl implements GameService {
 
 	@Autowired
-	private GameRepository gameRepository;
+	private Repository.GameRepository gameRepository;
 	
 	@Override
 	public List<Game> getAllGameList() {
@@ -58,46 +57,14 @@ public class GameServiceImpl implements GameService {
 	}
 
 	@Override
-	public List<Board> getAllBoardList() {
-		return gameRepository.getAllBoardList();
-	}
-
-	@Override
-	public void setNewPost(Board board) {
-		gameRepository.setNewPost(board);
-		
-	}
-
-	@Override
 	public void updateOneGame(Game game) {
 		gameRepository.updateOneGame(game);
 	}
 
-	@Override
-	public Board getPostById(String postId) {
-		return gameRepository.getPostById(postId);
-	}
+	
 
-	@Override
-	public void deleteOnePost(int postId) {
-		gameRepository.deleteOnePost(postId);
-		
-	}
+	
 
-	@Override
-	public void updateOnePost(Board board) {
-		gameRepository.updateOnePost(board);
-		
-	}
-
-	@Override
-	public List<Reply> getAllReply(String rootId, String category) {
-		return gameRepository.getAllReply(rootId, category);
-	}
-
-	@Override
-	public void setNewReply(Reply reply) {
-		gameRepository.setNewReply(reply);
-	}
+	
 
 }
