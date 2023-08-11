@@ -34,12 +34,12 @@
 						 	<c:choose>
 						 		<c:when test="${ isAdmin }">
 						 			<a href="<c:url value="./admin/updateGame?gameId=${ game.gameId }"/>"class="btn btn-warning">수정하기 &raquo;</a>
-						 			<a href="<c:url value="./admin/delete?id=${ game.gameId }"/>"class="btn btn-danger">삭제하기 &raquo;</a>
+						 			<a href="<c:url value="./admin/delete?gameId=${ game.gameId }"/>"class="btn btn-danger">삭제하기 &raquo;</a>
 						 		</c:when>
 						 	</c:choose>
 				</div>
 				<div class="col -md-6">
-					<img style="position: absolute; top:0; left:0; width:100%;" src="${ pageContext.request.contextPath }/resources/imageFiles/${ game.imgPath }" alt="사진 없음" />
+					<img style="position: absolute; top:0; left:0; height:100%;" src="${ pageContext.request.contextPath }/resources/imageFiles/${ game.imgPath }" alt="사진 없음" />
 				</div>
 			</div>
 			<c:set var="category" value="game" />

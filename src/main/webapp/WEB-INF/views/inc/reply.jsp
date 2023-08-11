@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 	<body>
-		<div class="row" align="center">
+		<div class="row" align="center" style="margin-top:20px;">
 			<table class="table table-hover">
 				<thead class="thead-light">
 					<tr>
@@ -35,8 +35,12 @@
 	 		<c:when test="${ isAuthenicated }">
 				<form:form modelAttribute="newReply" method="post">
 	  				<div class="container" style="padding-left:0px; padding-right:0px;">
-				  		<form:hidden path="rootId" value="${ game.gameId }"/>
-				  		<form:hidden path="rootId" value="${ board.postId }"/>
+	  					<c:if test="${catetory == 'game' }">
+	  						<form:hidden path="rootId" value="${ game.gameId }"/>
+	  					</c:if>
+				  		<c:if test="${ category == 'board' }">
+				  			<form:hidden path="rootId" value="${ board.postId }"/>
+				  		</c:if>
 				        <form:hidden path="userName" value="${ username }"/>
 				        <input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
 				        <form:input type="text" class="form-control mb-2" path="content"  placeholder="댓글을 입력하세요" />

@@ -25,12 +25,14 @@ import com.gamesLibrary.service.Service;
 
 @Controller
 public class GameController {
+	
 	@Autowired
 	private Service.GameService gameService;
-	
 	@Autowired
 	private Service.ReplyService replyService;
 
+	private String imageDirectory = "C:\\03StringWorkspace\\GamesLibrary\\src\\main\\webapp\\resources\\imageFiles\\";
+	
 	// Home
 		@GetMapping("/home")
 		public String requestGameHome(Model model) {
@@ -48,7 +50,7 @@ public class GameController {
 	
 	// One View
 		@GetMapping("/game")
-		public String requestByGameId(@RequestParam("id") String gameId, Model model, @ModelAttribute("newReply") Reply reply) {
+		public String requestByGameId(@RequestParam("gameId") String gameId, Model model, @ModelAttribute("newReply") Reply reply) {
 			Game game = gameService.getGameId(gameId);
 			List<Reply> replyList = replyService.getAllReply(gameId, "game");
 			model.addAttribute("game", game);
@@ -108,6 +110,7 @@ public class GameController {
 				gameService.setNewGame(game);
 				return "redirect:/all";
 			}
+			
 	// Update Game
 		// Request
 			@GetMapping("/admin/updateGame")
@@ -116,9 +119,14 @@ public class GameController {
 				model.addAttribute("updateGame", game);
 				return "updateGame";
 			}
+			
 		// Submit
 			@PostMapping("/admin/updateGame")
-			public String submitUpdateGame(@ModelAttribute("updateGame") Game game, Model model) {
+			public String submitUpdateGame(@ModelAttribute("updateGame") Game game, Model model, @ModelAttribute("newReply") Reply reply) {
+				String prevImagePath = imageDirectory + gameService.getGameId(Integer.toString(game.getGameId())).getImgPath();
+				File file = new File (prevImagePath);
+				file.delete();
+				
 				String uuid = UUID.randomUUID().toString().replaceAll(" ", "");
 				String title = game.getTitle().replaceAll(" ", "");
 				String originalFilename = game.getImageFile().getOriginalFilename().replaceAll(" ","");
@@ -126,7 +134,7 @@ public class GameController {
 		
 				game.setImgPath(imageFileName);
 				try {
-					game.getImageFile().transferTo(new File("C:\\03StringWorkspace\\GamesLibrary\\src\\main\\webapp\\resources\\imageFiles\\" + imageFileName));
+					game.getImageFile().transferTo(new File(imageDirectory + imageFileName));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -135,13 +143,20 @@ public class GameController {
 				gameService.getAllGameList();
 				Game resultGame = gameService.getGameId(Integer.toString(game.getGameId()));
 				model.addAttribute("game", resultGame);
+				List<Reply> replyList = replyService.getAllReply(Integer.toString(game.getGameId()), "game");
+				model.addAttribute("replyList", replyList);
 				
 				return "game";
 			}
+			
 	// Delete Game
 		@GetMapping("/admin/delete")
-		public String requestDeleteGame(@RequestParam("postId") String gameId) {
+		public String requestDeleteGame(@RequestParam("gameId") String gameId) {
+			String imagePath = imageDirectory + gameService.getGameId(gameId).getImgPath();
+			File file = new File(imagePath);
+			file.delete();
 			gameService.deleteOneGame(Integer.parseInt(gameId));
+			
 			return "redirect:/all";
 		}
 		

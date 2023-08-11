@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
+<script type ="text/javascript" src="/GamesLibrary/src/main/webapp/WEB-INF/views/inc/popper.min.js"></script>
+<link href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<div class="jumbotron"
@@ -25,13 +27,12 @@
 				<div class="dropdown">
 				  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">검색설정</a>
 				  <div class="dropdown-menu">
-				    <a class="dropdown-item" href="#">타이틀</a>
-				    <a class="dropdown-item" href="#">장르</a>
-				    <a class="dropdown-item" href="#">개발사</a>
-				    <a class="dropdown-item" href="#">배급사</a>
+				    <a class="dropdown-item" href="#">Action</a>
+				    <a class="dropdown-item" href="#">Another action</a>
+				    <a class="dropdown-item" href="#">Something else here</a>
 				  </div>
 				</div>
-				<input type="text" class="form-control" name="gameTitle" placeholder="타이틀을 입력하세요">
+				<input type="text" class="form-control" name="gameTitle" placeholder="김의엽 짱짱맨">
 			</div>
 			<button type="submit" class="btn btn-primary mb-2">검색</button>
 		</form>
@@ -45,6 +46,9 @@
 				<a class="navbar-brand" href="${ pageContext.request.contextPath }/all">게임 목록</a> 
 				<a class="navbar-brand" href="${ pageContext.request.contextPath }/admin/add">신규 등록</a>
 				<a class="navbar-brand" href="${ pageContext.request.contextPath }/boardList">게시판</a> 
+			</div>
+			<div style ="color:white;">
+			<%@ include file="./Clock.jsp" %>
 			</div>
 		</div>
 		<div class="float-right" style="width:200px; displsy:inline-block">

@@ -15,5 +15,7 @@
 	<!-- Update -->
 	
 	<!-- Delete -->
-
+		<delete id="deleteReply" parameterType="Stirng">
+			delete from reply where rootid = ${ rootId } and category = #{ category }
+		</delete>
 </mapper>

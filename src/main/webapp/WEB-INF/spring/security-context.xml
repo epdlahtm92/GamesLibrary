@@ -20,10 +20,10 @@
     </http>    
     
     <authentication-manager>
-    	<authentication-provider user-service-ref="customUserDetailsService">
+    	<authentication-provider user-service-ref="customUser">
     	</authentication-provider>
 	</authentication-manager>
 
-	<beans:bean id="customUserDetailsService" class="com.gamesLibrary.security.CustomUserDetailsService" />
+	<beans:bean id="customUser" class="com.gamesLibrary.security.CustomUserDetailsService" />
 	
 </beans:beans>

@@ -15,10 +15,10 @@ public class Board {
 		super();
 	}
 
-	public Board(int rootid, int postid, String title, String content, String user) {
+	public Board(int rootId, int postId, String title, String content, String user) {
 		super();
-		this.rootId = rootid;
-		this.postId = postid;
+		this.rootId = rootId;
+		this.postId = postId;
 		this.title = title;
 		this.content = content;
 		this.userName = user;

@@ -8,7 +8,7 @@
 	<style>
 		body {background-color:gray;}
 	</style>
-<link href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
+
 <meta charset="UTF-8">
 <title>Welcome to Game Library</title>
 <script type="text/javascript">
@@ -24,13 +24,13 @@
 </head>
 <body>
 	<%@ include file="./inc/header.jsp" %>
-
+	
 	<div class="container">
 		<div class="row" align="center">
 			<c:forEach items="${ gameList }" var="game">
 				<div class="col -md-4">
-					<h3><a style="color:black; text-decoration:none" href=./game?id=${ game.gameId }><c:out value="${ game.title }" /></a></h3>
-					<p><a style="color:black; text-decoration:none" href=./game?id=${ game.gameId }>
+					<h3><a style="color:black; text-decoration:none" href="./game?gameId=${ game.gameId }"><c:out value="${ game.title }" /></a></h3>
+					<p><a style="color:black; text-decoration:none" href="./game?gameId=${ game.gameId }">
 						<img width=460 height=230 src="${ pageContext.request.contextPath }/resources/imageFiles/${ game.imgPath }" alt="사진 없음"/>
 					   </a></p>
 						<br><c:out value="시리즈 : ${ game.seriesName } 의 ${ game.seriesNumber } 번 째 작품" />

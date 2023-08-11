@@ -19,25 +19,25 @@
 				<div class="form-group row">
 					<label class="col-sm-2 control-label">아이디</label>
 					<div class="col -sm-3">
-						<form:input path="userName" class="form-control" />
+						<form:input path="userName" class="form-control"  placeholder="의엽이 짱짱맨"/>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2 control-label">비밀번호</label>
 					<div class="col -sm-3">
-						<form:input path="password" class="form-control" />
+						<form:input path="password" class="form-control"   placeholder="의엽이 짱짱맨"/>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2 control-label">비밀번호 확인</label>
 					<div class="col -sm-3">
-						<form:input path=""  class="form-control" />
+						<form:input path=""  class="form-control"  placeholder="의엽이 짱짱맨" />
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2 control-label">이메일</label>
 					<div class="col -sm-3">
-						<form:input path="eMail" class="form-control" />
+						<form:input path="eMail" class="form-control"  placeholder="의엽이 짱짱맨" />
 					</div>
 				</div>	
 				<div class="float-right">

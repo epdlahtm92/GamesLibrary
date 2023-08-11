@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gamesLibrary.domain.Board;
+import com.gamesLibrary.domain.Reply;
 import com.gamesLibrary.service.Service;
 
 @Controller
 public class BoardController {
 	@Autowired
 	private Service.BoardService boardService;
+	@Autowired
+	private Service.ReplyService replyService;
 	
 	// create
 		@GetMapping("/member/addPost")
@@ -42,9 +45,13 @@ public class BoardController {
 		}
 	
 		@GetMapping("/postView")
-		public String requestPostById(@RequestParam("id") String postId, Model model) {
+		public String requestPostById(@RequestParam("postId") String postId, Model model, @ModelAttribute("newReply") Reply reply) {
 			Board board = boardService.getPostById(postId);
+			List<Reply> replyList = replyService.getAllReply(postId, "board");
+			
 			model.addAttribute("board", board);
+			model.addAttribute("replyList", replyList);
+			
 			return "postView";
 		}
 	
@@ -72,4 +79,13 @@ public class BoardController {
 			boardService.deleteOnePost(Integer.parseInt(postId));
 			return "redirect:/boardList";
 		}
+	
+	// Reply
+		// Add Reply
+			@PostMapping("/postView")
+			public String submitAddReply(@ModelAttribute("newReply") Reply reply) {
+				replyService.setNewReply(reply);
+				String id = Integer.toString(reply.getRootId());
+				return "redirect:/postView?postId=" + id;
+			}
 }

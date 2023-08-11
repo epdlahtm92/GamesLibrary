@@ -50,6 +50,7 @@ public interface Repository {
 		//Delete
 		void deleteOnePost(int postId);				
 	}
+	
 	interface ReplyRepository {
 		//Create
 		void setNewReply(Reply reply);

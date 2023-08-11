@@ -10,8 +10,7 @@ body {
 	background-color: gray;
 }
 </style>
-<link
-	href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Welcome to Game Library</title>
 </head>
@@ -33,7 +32,7 @@ body {
 					<c:forEach items="${ boardList }" var="boardList">
 						<tr>
 							<td><c:out value="${ boardList.postId }" /></td>
-							<td><a style="color:black; text-decoration:none" href="${ pageContext.request.contextPath }/postView?id=${ boardList.postId }"><c:out value="${ boardList.title }" /></a></td>
+							<td><a style="color:black; text-decoration:none" href="${ pageContext.request.contextPath }/postView?postId=${ boardList.postId }"><c:out value="${ boardList.title }" /></a></td>
 							<td><c:out value="${ boardList.userName }" /></td>
 							<td><c:out value="${ boardList.postDate }" /></td>
 						</tr>

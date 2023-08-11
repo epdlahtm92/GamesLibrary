@@ -2,6 +2,7 @@ package com.gamesLibrary.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -21,6 +22,7 @@ public interface ReplyMapper {
 	//Update
 	
 	//Delete
-	
+		@Delete("delete from reply where rootid = ${ rootId } and category = #{ category }")
+		public void deleteAllReply(@Param("Root") HashMap root)
 	
 }

@@ -14,7 +14,7 @@
 	<body>
 		<%@ include file="./inc/header.jsp" %>
 
-		<div class="container">
+		<div class="container" style="margin-bottom:70px;">
 			<div class="row">
 				<div class="col -md-4">
 					<h3><c:out value="${ board.title }" /></h3>
@@ -32,6 +32,8 @@
 						 	</c:choose>
 				</div>
 			</div>
+			<c:set var="category" value="board" />
+			<%@ include file="./inc/reply.jsp" %>
 		</div>
 		
 		<%@ include file="./inc/footer.jsp" %>

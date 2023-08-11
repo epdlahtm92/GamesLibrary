@@ -26,7 +26,6 @@ public class GameRepositoryImpl implements GameRepository {
 	private ReplyMapper replyMapper;
 	
 	private List<Game> listOfGames = new ArrayList<Game>();
-
 	private List<Reply> listOfReply = new ArrayList<Reply>();
 	
 	public GameRepositoryImpl() {

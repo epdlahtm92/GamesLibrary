@@ -22,8 +22,8 @@ public class SecurityController {
 		String backURL = "";
 		if (!request.getHeader("referer").contains("admin")) {
 			backURL = request.getHeader("referer");
-		};
-		return "redirect:/all";
+		}
+		return "redirect:" + backURL;
 	}
 	
 	@GetMapping("/logoutSuccess")
