@@ -4,8 +4,7 @@ import java.sql.Date;
 
 public class Board {
 	
-	private int rootId;
-	private int postId;
+	private int boardId;
 	private String title;
 	private String content;
 	private String userName;
@@ -15,29 +14,21 @@ public class Board {
 		super();
 	}
 
-	public Board(int rootId, int postId, String title, String content, String user) {
+	public Board(int boardId, String title, String content, String user) {
 		super();
-		this.rootId = rootId;
-		this.postId = postId;
+		this.boardId = boardId;
 		this.title = title;
 		this.content = content;
 		this.userName = user;
 	}
 
-	public int getRootId() {
-		return rootId;
+
+	public int getBoardId() {
+		return boardId;
 	}
 
-	public void setRootId(int rootId) {
-		this.rootId = rootId;
-	}
-
-	public int getPostId() {
-		return postId;
-	}
-
-	public void setPostId(int postId) {
-		this.postId = postId;
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
 	}
 
 	public String getTitle() {

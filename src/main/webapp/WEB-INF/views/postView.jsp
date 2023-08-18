@@ -26,8 +26,8 @@
 						 <sec:authorize access="hasAuthority('ROLE_ADMIN')" var="isAdmin" ></sec:authorize>
 						 	<c:choose>
 						 		<c:when test="${ isAdmin }">
-						 			<a href="${ pageContext.request.contextPath }/admin/updatePost?postId=${ board.postId }" class="btn btn-warning">수정하기 &raquo;</a>
-						 			<a href="<c:url value="${ pageContext.request.contextPath }/admin/deletePost?postId=${ board.postId }"/>"class="btn btn-danger">삭제하기 &raquo;</a>
+						 			<a href="${ pageContext.request.contextPath }/admin/updatePost?boardId=${ board.boardId }" class="btn btn-warning">수정하기 &raquo;</a>
+						 			<a href="<c:url value="${ pageContext.request.contextPath }/admin/deletePost?boardId=${ board.boardId }"/>"class="btn btn-danger">삭제하기 &raquo;</a>
 						 		</c:when>
 						 	</c:choose>
 				</div>

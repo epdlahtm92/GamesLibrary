@@ -29,18 +29,21 @@
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>
+		</div>	
 		<sec:authorize access="isAuthenticated()" var="isAuthenicated" />
 	 	<c:choose>
 	 		<c:when test="${ isAuthenicated }">
 				<form:form modelAttribute="newReply" method="post">
 	  				<div class="container" style="padding-left:0px; padding-right:0px;">
-	  					<c:if test="${catetory == 'game' }">
-	  						<form:hidden path="rootId" value="${ game.gameId }"/>
-	  					</c:if>
-				  		<c:if test="${ category == 'board' }">
-				  			<form:hidden path="rootId" value="${ board.postId }"/>
-				  		</c:if>
+						<c:choose>
+							<c:when test="${ category == 'board' }">
+								<form:hidden path="rootId" value="${ board.boardId }" />
+							</c:when>
+							<c:when test="${ category == 'game' }">
+								<form:hidden path="rootId" value="${ game.gameId }" />
+							</c:when>
+							<c:otherwise></c:otherwise>
+						</c:choose>
 				        <form:hidden path="userName" value="${ username }"/>
 				        <input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
 				        <form:input type="text" class="form-control mb-2" path="content"  placeholder="댓글을 입력하세요" />

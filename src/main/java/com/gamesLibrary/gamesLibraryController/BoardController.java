@@ -45,9 +45,9 @@ public class BoardController {
 		}
 	
 		@GetMapping("/postView")
-		public String requestPostById(@RequestParam("postId") String postId, Model model, @ModelAttribute("newReply") Reply reply) {
-			Board board = boardService.getPostById(postId);
-			List<Reply> replyList = replyService.getAllReply(postId, "board");
+		public String requestPostById(@RequestParam("boardId") String boardId, Model model, @ModelAttribute("newReply") Reply reply) {
+			Board board = boardService.getPostById(boardId);
+			List<Reply> replyList = replyService.getAllReply(boardId, "board");
 			
 			model.addAttribute("board", board);
 			model.addAttribute("replyList", replyList);
@@ -57,8 +57,8 @@ public class BoardController {
 	
 	// update
 		@GetMapping("/admin/updatePost")
-		public String requestUpdatePostForm(@RequestParam("postId") String postId, Model model) {
-			Board board = boardService.getPostById(postId);
+		public String requestUpdatePostForm(@RequestParam("boardId") String boardId, Model model) {
+			Board board = boardService.getPostById(boardId);
 			model.addAttribute("updatePost", board);
 			return "updatePost";
 		}
@@ -67,25 +67,25 @@ public class BoardController {
 		public String submitUpdatePost(@ModelAttribute("updatePost") Board board, Model model) {
 			boardService.updateOnePost(board);
 			boardService.getAllBoardList();
-			String postId = Integer.toString(board.getPostId());
-			Board resultBoard = boardService.getPostById(postId);
+			String boardId = Integer.toString(board.getBoardId());
+			Board resultBoard = boardService.getPostById(boardId);
 			model.addAttribute("board", resultBoard);
 			return "postView";
 		}
 		
 	// delete
 		@GetMapping("/admin/deletePost")
-		public String requestDeletePost(@RequestParam("postId") String postId) {
-			boardService.deleteOnePost(Integer.parseInt(postId));
+		public String requestDeletePost(@RequestParam("boardId") String boardId) {
+			boardService.deleteOnePost(Integer.parseInt(boardId));
 			return "redirect:/boardList";
 		}
 	
 	// Reply
 		// Add Reply
 			@PostMapping("/postView")
-			public String submitAddReply(@ModelAttribute("newReply") Reply reply) {
+			public String submitAddBoardReply(@ModelAttribute("newReply") Reply reply) {
 				replyService.setNewReply(reply);
-				String id = Integer.toString(reply.getRootId());
-				return "redirect:/postView?postId=" + id;
+				String boardId = Integer.toString(reply.getRootId());
+				return "redirect:/postView?boardId=" + boardId;
 			}
 }

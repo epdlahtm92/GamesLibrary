@@ -35,7 +35,7 @@ public class BoardRepositoryImpl implements BoardRepository {
 		public Board getPostById(String postId) {
 			Board boardInfo = null;
 			for (Board board : listOfBoards) {
-				if (board != null && board.getPostId() != 0 && board.getPostId() == Integer.parseInt(postId)) {
+				if (board != null && board.getBoardId() != 0 && board.getBoardId() == Integer.parseInt(postId)) {
 					boardInfo = board;
 					break;
 				}

@@ -56,7 +56,7 @@ crossorigin="anonymous"></script>
 				<div class="form-group row">
 					<label class="col-sm-2 control-label" >내용</label>
 					<div class="col -sm-3">
-						<div id="summernote"></div>
+						<form:textarea id="summernote" path="content"></form:textarea>>
 					</div>
 				</div>
 				<div class="form-group row">

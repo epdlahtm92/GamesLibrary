@@ -8,7 +8,7 @@
 		</insert>
 	
 	<!-- Read -->
-		<select id="getOneUser" parameterType="String" resultType="com.gamesLibrary.security.CustomUserDetails">
+		<select id="getUserByUserName" parameterType="String" resultType="com.gamesLibrary.security.CustomUserDetails">
 			select * from users where username = #{ userName }
 		</select>
 	

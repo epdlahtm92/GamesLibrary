@@ -3,23 +3,23 @@
 <mapper namespace="com.gamesLibrary.mapper.BoardMapper">
 	
 	<!--  Create  -->
-		<insert id="insertOnePost" parameterType="com.gamesLibrary.domain.Board">
-				insert into board (rootid, postid, title, content, username, postdate) values (${Board.rootId}, board_seq.nextval, #{Board.title}, #{Board.content}, #{Board.userName}, sysdate)
+		<insert id="insertOneBoard" parameterType="com.gamesLibrary.domain.Board">
+				insert into board (boardid, title, content, username, postdate) values (board_seq.nextval, #{Board.title}, #{Board.content}, #{Board.userName}, sysdate)
 		</insert>
 	
 	<!--  Read -->
-		<select id="getAllPost" resultType="com.gamesLibrary.domain.Board">
-			select * from board order by postid
+		<select id="getAllBoard" resultType="com.gamesLibrary.domain.Board">
+			select * from board order by boardid
 		</select>
 		
 	<!-- Update -->
-		<update id="updatePost" parameterType="com.gamesLibrary.domain.Board">
-				update board set title = #{ Board.title }, content = #{ Board.content }, postdate = sysdate where postid = ${ Board.postId }
+		<update id="updateOneBoard" parameterType="com.gamesLibrary.domain.Board">
+				update board set title = #{ Board.title }, content = #{ Board.content }, postdate = sysdate where boardid = ${ Board.boardId }
 		</update>
 		
 	<!-- Delete -->
 		<delete id="deleteOneBoard" parameterType="Integer">
-			delete from board where postid = ${ postId }
+			delete from board where boardid = ${ boardId }
 		</delete>
 		
 </mapper>

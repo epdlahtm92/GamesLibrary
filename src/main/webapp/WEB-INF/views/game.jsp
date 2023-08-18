@@ -39,7 +39,7 @@
 						 	</c:choose>
 				</div>
 				<div class="col -md-6">
-					<img style="position: absolute; top:0; left:0; height:100%;" src="${ pageContext.request.contextPath }/resources/imageFiles/${ game.imgPath }" alt="사진 없음" />
+					<img style="position: absolute; top:0; left:0; width:100%;" src="${ pageContext.request.contextPath }/resources/imageFiles/${ game.imgPath }" alt="사진 없음" />
 				</div>
 			</div>
 			<c:set var="category" value="game" />

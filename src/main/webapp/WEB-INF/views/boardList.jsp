@@ -31,8 +31,8 @@ body {
 				<tbody>
 					<c:forEach items="${ boardList }" var="boardList">
 						<tr>
-							<td><c:out value="${ boardList.postId }" /></td>
-							<td><a style="color:black; text-decoration:none" href="${ pageContext.request.contextPath }/postView?postId=${ boardList.postId }"><c:out value="${ boardList.title }" /></a></td>
+							<td><c:out value="${ boardList.boardId }" /></td>
+							<td><a style="color:black; text-decoration:none" href="${ pageContext.request.contextPath }/postView?boardId=${ boardList.boardId }"><c:out value="${ boardList.title }" /></a></td>
 							<td><c:out value="${ boardList.userName }" /></td>
 							<td><c:out value="${ boardList.postDate }" /></td>
 						</tr>

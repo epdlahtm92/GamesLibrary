@@ -53,6 +53,7 @@ public class GameController {
 		public String requestByGameId(@RequestParam("gameId") String gameId, Model model, @ModelAttribute("newReply") Reply reply) {
 			Game game = gameService.getGameId(gameId);
 			List<Reply> replyList = replyService.getAllReply(gameId, "game");
+			
 			model.addAttribute("game", game);
 			model.addAttribute("replyList", replyList);
 			return "game";
@@ -163,18 +164,18 @@ public class GameController {
 	// Reply
 		// Add Reply
 			@PostMapping("/game")
-			public String submitAddReply(@ModelAttribute("newReply") Reply reply) {
+			public String submitAddGameReply(@ModelAttribute("newReply") Reply reply) {
 				replyService.setNewReply(reply);
-				String id = Integer.toString(reply.getRootId());
-				return "redirect:/game?id=" + id;
+				String gameId = Integer.toString(reply.getRootId());
+				return "redirect:/game?gameId=" + gameId;
 			}
 	
-	// ModelAttribute
-		@ModelAttribute
-		public void addAttribute(Model model) {
-			model.addAttribute("addTitle", "신규 게임 등록");
-			model.addAttribute("updateTitle", "게임 설명 수정");	
-		}
+//	// ModelAttribute
+//		@ModelAttribute
+//		public void addAttribute(Model model) {
+//			model.addAttribute("addTitle", "신규 게임 등록");
+//			model.addAttribute("updateTitle", "게임 설명 수정");	
+//		}
 
 
 }

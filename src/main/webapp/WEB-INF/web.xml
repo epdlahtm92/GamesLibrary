@@ -79,5 +79,11 @@
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
+	
+	<!-- 에러 관리 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error404</location>
+	</error-page>
 
 </web-app>

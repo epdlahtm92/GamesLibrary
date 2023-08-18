@@ -3,26 +3,26 @@
 <mapper namespace="com.gamesLibrary.mapper.GameMapper">
 
 	<!--  create  -->
-		<insert id="insertOne" parameterType="com.gamesLibrary.domain.Game" >
+		<insert id="insertOneGame" parameterType="com.gamesLibrary.domain.Game" >
 			insert into gamelist (gameid, title, developer, developercountry, publisher, publishercountry, seriesname, seriesnumber, genre, imgpath, price, releasedate, description) values (gamelist_seq.NEXTVAL, #{ Game.title }, #{ Game.developer }, #{ Game.developerCountry }, #{ Game.publisher }, #{ Game.publisherCountry }, #{ Game.seriesName }, #{ Game.seriesNumber }, #{ Game.genre }, #{ Game.imgPath }, #{ Game.price }, #{ Game.releaseDate }, #{ Game.description })
 		</insert>
 
 	<!-- read  -->
-		<select id="getAll" resultType="com.gamesLibrary.domain.Game">
+		<select id="getAllGame" resultType="com.gamesLibrary.domain.Game">
 			select * from gamelist order by gameid
 		</select>
 	
-		<select id="searchTitle" parameterType="String" resultType="com.gamesLibrary.domain.Game">
+		<select id="getGameListByTitle" parameterType="String" resultType="com.gamesLibrary.domain.Game">
 			select * from gamelist where lower(title) like '%${ gameTitle }%'
 		</select>
 		
 	<!-- update -->
-		<update id="updateOne" parameterType="com.gamesLibrary.domain.Game">
+		<update id="updateOneGame" parameterType="com.gamesLibrary.domain.Game">
 			update gamelist set title= #{ Game.title }, developer = #{ Game.developer }, developercountry = #{ Game.developerCountry }, publisher = #{ Game.publisher }, publishercountry= #{ Game.publisherCountry }, seriesname = #{ Game.seriesName }, seriesnumber = #{ Game.seriesNumber }, genre = #{ Game.genre }, imgpath = #{ Game.imgPath }, price = #{ Game.price }, releasedate = #{ Game.releaseDate }, description = #{ Game.description } where gameid= ${ Game.gameId }
 		</update>
 		
 	<!-- delete -->
-		<delete id="deleteOne" parameterType="Integer" >
+		<delete id="deleteOneGame" parameterType="Integer" >
 			delete from gamelist where gameid = ${ gameid }
 		</delete> 
 

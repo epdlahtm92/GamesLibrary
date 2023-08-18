@@ -4,18 +4,18 @@
 
 	<!-- Create -->
 		<insert id="insertOneReply" parameterType="com.gamesLibrary.domain.Reply">
-			insert into reply (rootid, postid, username, content, postdate, category) values (${ Reply.rootId }, reply_seq.nextval, #{ Reply.userName }, #{ Reply.content }, sysdate, #{ Reply.category })
+			insert into reply (rootid, replyid, username, content, postdate, category) values (${ Reply.rootId }, reply_seq.nextval, #{ Reply.userName }, #{ Reply.content }, sysdate, #{ Reply.category })
 		</insert>
 			
 	<!-- Read -->
-		<select id="getReply" parameterType="String" resultType="com.gamesLibrary.domain.Reply">
-			select * from reply where rootid = #{ rootId } and category = #{ category } order by postid
+		<select id="getAllReply" parameterType="String" resultType="com.gamesLibrary.domain.Reply">
+			select * from reply where rootid = ${ rootId } and category = #{ category } order by replyid
 		</select>
 			
 	<!-- Update -->
 	
 	<!-- Delete -->
-		<delete id="deleteReply" parameterType="Stirng">
+		<delete id="deleteAllReply" parameterType="String">
 			delete from reply where rootid = ${ rootId } and category = #{ category }
 		</delete>
 </mapper>

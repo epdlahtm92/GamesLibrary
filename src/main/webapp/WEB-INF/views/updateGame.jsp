@@ -3,6 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+	function setThumbnail(e){
+		var reader = new FileReader();
+		
+		reade.onload = function(e){
+			var image = document.createElement("image");
+			image.setAttribute("src", e.target.result);
+			document.querySelector("div#image").appendChild(image);
+
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	}
+</script>
 <link
 	href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -100,28 +113,28 @@
 				<div class="form-group row">
 					<label class="col-sm-2 control-label">가격</label>
 					<div class="col -sm-3">
-						<form:input path="price" class="form-control" value="${ newGame.price }"/>
+						<form:input path="price" class="form-control" value="${ updateGame.price }"/>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2 control-label">발매일</label>
 					<div class="col -sm-3">
-						<form:input path="releaseDate" class="form-control" value="${ newGame.releaseDate }"/>
+						<form:input path="releaseDate" class="form-control" value="${ updateGame.releaseDate }"/>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2 control-label">상세 설명</label>
 					<div class="col -sm-3">
 						<form:textarea path="description" cols="50" rows="2"
-							class="form-control" value="${ newGame.description }"></form:textarea>
+							class="form-control" value="${ updateGame.description }"></form:textarea>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2 control-label">사진 추가</label>
 					<div class="col -sm-3">
 						<form:input path="imageFile" type="file" cols="50" rows="2"
-							class="form-control" />
-						<img src="${ pageContext.request.contextPath }/resources/imageFiles/${ newGame.imgPath }" alt="" />
+							class="form-control" accept="image/*" onchange="setThumbnail(e);" />
+						<img id="image" src="${ pageContext.request.contextPath }/resources/imageFiles/${ updateGame.imgPath }" alt="없음" />
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
 					</div>
