@@ -21,7 +21,7 @@ public class ReplyRepositoryImpl implements ReplyRepository {
 	//Create
 		@Override
 		public void setNewReply(Reply reply) {
-			replyMapper.insertReply(reply);
+			replyMapper.insertOneReply(reply);
 		}
 
 	//Read

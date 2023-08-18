@@ -18,6 +18,6 @@ public class UserAuthDAO {
 	
 	//Create User
 	public void createUser(CustomUserDetails customUserDetails) {
-		userMapper.insertUser(customUserDetails);
+		userMapper.insertOneUser(customUserDetails);
 	}
 }

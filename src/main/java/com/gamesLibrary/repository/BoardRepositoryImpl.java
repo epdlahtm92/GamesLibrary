@@ -27,7 +27,7 @@ public class BoardRepositoryImpl implements BoardRepository {
 	//Read
 		@Override
 		public List<Board> getAllBoardList() {
-			listOfBoards = boardMapper.getAllPosts();
+			listOfBoards = boardMapper.getAllBoard();
 			return listOfBoards;
 		}
 	
@@ -49,13 +49,13 @@ public class BoardRepositoryImpl implements BoardRepository {
 	//Update
 		@Override
 		public void updateOnePost(Board board) {
-			boardMapper.updateOnePost(board);
+			boardMapper.updateOneBoard(board);
 		}
 		
 	//Delete
 		@Override
-		public void deleteOnePost(int postId) {
-			boardMapper.deleteOnePost(postId);
+		public void deleteOnePost(int boardId) {
+			boardMapper.deleteOneBoard(boardId);
 		}
 	
 }
