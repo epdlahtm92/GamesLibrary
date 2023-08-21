@@ -32,7 +32,7 @@
 				    <a class="dropdown-item" href="#">Something else here</a>
 				  </div>
 				</div>
-				<input type="text" class="form-control" name="gameTitle" placeholder="김의엽 짱짱맨">
+				<input type="text" class="form-control" name="gameTitle" >
 			</div>
 			<button type="submit" class="btn btn-primary mb-2">검색</button>
 		</form>
