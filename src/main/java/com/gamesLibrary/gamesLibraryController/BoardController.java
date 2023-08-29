@@ -39,7 +39,7 @@ public class BoardController {
 	// read
 		@GetMapping("/boardList")
 		public String requestBoardList(Model model) {
-			List<Board>boardList = boardService.getAllBoardList();
+			List<Board> boardList = boardService.getAllBoardList();
 			model.addAttribute("boardList", boardList);
 			return "boardList";
 		}
